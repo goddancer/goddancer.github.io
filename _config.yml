@@ -2,7 +2,7 @@
 #   Main Configs   #
 # ---------------- #
 baseurl:
-url: http://blog.goddancer.com/
+url: http://blog.goddancer.com
 date_format: "ordinal"
 title: Jico
 subtitle: "Do what u want to do..."
