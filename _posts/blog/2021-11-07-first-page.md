@@ -1,9 +1,13 @@
 ---
 layout: post
-title: first page
+title: follow your heart
 categories: [Blog]
-description: new page here
-keywords: first page
+description: some mind about future..
+keywords: follow heart
 ---
 
-做好自己，时刻努力，静待花开～
+Be yourself, always work hard, and wait for the folowers to bloom..
+
+```bash
+echo 'hello world!'
+```

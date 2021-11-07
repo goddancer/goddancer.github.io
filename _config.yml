@@ -11,6 +11,9 @@ keywords: Jico, goddancer
 timezone: Asia/Beijing
 encoding: "utf-8"
 side_bar_repo_limit: 5
+# 代码高亮风格，支持的 theme 列表见 https://github.com/goddancer/rouge-themes
+# 去_includes/header.html打开注释应用
+highlight_theme: molokai
 
 # ---------------- #
 #      Author      #
