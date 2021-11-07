@@ -1,7 +1,7 @@
 ---
 layout: post
 title: follow your heart
-categories: [Blog]
+categories: [Life]
 description: some mind about future..
 keywords: follow heart
 ---
