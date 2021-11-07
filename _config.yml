@@ -2,7 +2,7 @@
 #   Main Configs   #
 # ---------------- #
 baseurl:
-url: https://goddancer.github.io/
+url: http://blog.godancer.com/
 date_format: "ordinal"
 title: Jico
 subtitle: "Nothing to say..."
@@ -67,7 +67,7 @@ lsi: false
 quiet: false
 excerpt_separator: "\n\n"
 permalink: /:year/:month/:day/:title/
-gems:
+plugins:
     - jekyll-github-metadata
     - rouge
 #     - jekyll-html-pipeline
@@ -80,7 +80,7 @@ collections:
     wiki:
         output: true
         permalink: /wiki/:path/
-
+github: [metadata]
 repository: goddancer/goddancer.github.io
 
 # ---------------- #
