@@ -135,14 +135,14 @@ gitment:
     owner: goddancer
     repo: blog-comments
     oauth:
-        client_id: c7388a652fa81ccd1122
-        client_secret: 3e0273541221134823dc8fe8b8c92b8f4a69b528
+        client_id: 
+        client_secret: 
 # https://github.com/gitalk/gitalk#install
 gitalk:
     owner: goddancer
     repo: blog-comments
-    clientID: d5476425d75a9d480ca3
-    clientSecret: a7dd1d6321253facca258dfdf632f562ae3af47b
+    clientID: c7388a652fa81ccd1122
+    clientSecret: 70c0c8a2edf97c53f59194b63f5fd0efe3d526bc
 # https://utteranc.es/
 utterances:
     repo: goddancer/blog-comments
