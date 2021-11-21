@@ -138,6 +138,7 @@ gitment:
         client_id: 
         client_secret: 
 # https://github.com/gitalk/gitalk#install
+# my token view here: https://github.com/settings/developers
 gitalk:
     owner: goddancer
     repo: blog-comments
