@@ -55,6 +55,10 @@ sudo rm -rf /usr/local/.git ~/Library/Caches/Homebrew /usr/local/Homebrew
 
 <strong style="color: red;">修改brew镜像源将是一个很推荐的选择</strong>，相信我，得丝滑！
 
+### 1、清华源设置
+
 [清华源传送门](https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/)
 
-很丝滑地，安装结束。
+### 2、复原为官方源
+
+`git -C "$(brew --repo)" remote set-url origin https://github.com/Homebrew/brew.git`
