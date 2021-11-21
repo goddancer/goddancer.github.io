@@ -10,7 +10,41 @@ description: "Do what u want to do..."
 keywords: Jico, goddancer
 timezone: Asia/Beijing
 encoding: "utf-8"
-side_bar_repo_limit: 5
+# side_bar_repo_limit: 5
+# 对 css 和 js 资源的 cdn 加速配置
+cdn:
+    jsdelivr:
+        enabled: true
+# 可选组件配置
+components:
+    # 分享
+    # weibo,qq,wechat,douban,qzone,linkedin,facebook,twitter
+    share:
+        enabled: true
+        hide-platforms: qq,facebook
+    # TODO 不蒜子访问统计，待完善
+    busuanzi:
+        enabled: false
+        start_date: 2021-11-11
+    # My Popular Repositories
+    side_bar_repo:
+        enabled: false
+        limit: 5
+    # 文章字数统计
+    word_count:
+        enabled: true
+    # 页面右上角，以及「关于」页面的二维码
+    # 修改图片请替换 assets/images/qrcode.jpg
+    qrcode:
+        enabled: true
+        image_alt: Jico
+    # 维基索引页使用哪种视图，支持 列表（list）/分类（cate）
+    wiki:
+        view: cate
+# 压缩页面内容
+compress_html:
+  clippings: all
+  comments: ["<!--", "-->"]
 # 代码高亮风格，支持的 theme 列表见 https://github.com/goddancer/rouge-themes
 # 去_includes/header.html打开注释应用
 highlight_theme: molokai
@@ -98,17 +132,20 @@ disqus:
     username: 
 # https://imsun.net/posts/gitment-introduction/
 gitment:
-    owner: 
-    repo: 
+    owner: goddancer
+    repo: blog-comments
     oauth:
-        client_id: 
-        client_secret: 
+        client_id: c7388a652fa81ccd1122
+        client_secret: 3e0273541221134823dc8fe8b8c92b8f4a69b528
 # https://github.com/gitalk/gitalk#install
 gitalk:
     owner: goddancer
     repo: blog-comments
-    clientID: 2318f6a489bf203da279
-    clientSecret: 704935ac931f98ca51a93d3c1686a797f2389fb9
+    clientID: d5476425d75a9d480ca3
+    clientSecret: a7dd1d6321253facca258dfdf632f562ae3af47b
+# https://utteranc.es/
+utterances:
+    repo: goddancer/blog-comments
 # 在使用其它评论组件时可点击显示 Disqus
 lazy_load_disqus : false
 
@@ -117,7 +154,7 @@ lazy_load_disqus : false
 # ---------------- #
 simple_jekyll_search:
     # 是否支持全文搜索
-    fulltext: false
+    fulltext: true
     # 最多显示多少条搜索结果
     limit: 10
 
