@@ -1,9 +1,9 @@
 ---
 layout: post
-title: websocket
+title: WebSockets和EvnentSource简单对比&基本使用
 categories: [websocket, javascript]
-description: some word here
-keywords: websocket
+description: 关于WebSocket和EventSource特点的简单介绍、对比以及基本使用demo
+keywords: WebSockets, EventSource, Socket, SSE
 ---
 
 ## Websockets
@@ -127,9 +127,9 @@ ws.onmessage = function(ev) {
 websocketd --port=8080 ls
 ```
 
-## SSE(Server-Send-Events)
+## EventSource
 
-### SSE本质
+### SSE(Server-Send-Events)本质
 
 > 严格的说，HTTP协议无法做到服务器主动推送信息。但是，有一种变通方法，就是服务器向客户端声明，接下来要发送的是流信息(steaming)。
 
