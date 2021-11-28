@@ -1,5 +1,17 @@
 # Jico
 
+## 目录结构
+
+|-- _data: 
+|-- _drafts: 尚未发布的内容
+|-- _includes:
+|-- _layouts:
+|-- _posts: 已经发布的内容
+|-- _site:
+|-- _wiki: 已经发布的wiki页面
+|-- assets:
+|-- images: 文章和页面中使用到的图片
+|-- pages:
 ## 致谢
 
 本博客外观基于 [mzlogin](https://mazhuang.org/) 修改，感谢！
