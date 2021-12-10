@@ -1,0 +1,9 @@
+iframe[name="code"] {
+  height: 400px;
+  border: 0;
+  background-color: #f4f4f4;
+  max-width: 100%;
+  width: 100%;
+  color: #1b1b1b;
+  padding: 10px;
+}

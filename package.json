@@ -13,9 +13,36 @@
   },
   "keywords": [],
   "author": "",
+  "private": true,
   "license": "ISC",
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/codemirror"
+    ]
+  },
   "bugs": {
     "url": "https://github.com/goddancer/goddancer.github.io/issues"
   },
-  "homepage": "https://github.com/goddancer/goddancer.github.io#readme"
+  "homepage": "https://github.com/goddancer/goddancer.github.io#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^15.0.0",
+    "@commitlint/config-conventional": "^15.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,json,css,vue,less,md}": ["prettier --write", "git add"]
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
 }
