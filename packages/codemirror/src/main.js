@@ -1,23 +1,32 @@
+import CodeMirror from 'codemirror'
+import 'codemirror/lib/codemirror.css'
+import './styles/index.less'
+import 'codemirror/mode/javascript/javascript.js'
 import { writeOutput, formatOutput } from './utils/console-utils.js'
-import { getEl } from './utils/el.js';
+import { getEl } from './utils/el.js'
 
 const DEFAULT_CODE_TEXT = `console.log('hola CodeMirror');`;
 let CodeMirrorInstance = null;
 function initCodeMirror() {
   const { editorEl } = getEl();
 
-  CodeMirrorInstance = CodeMirror.fromTextArea(editorEl, {
-    mode: "javascript",
-    styleActiveLine: true,
-    lineNumbers: true,
-    lineWrapping: true,
-    inputStyle: "contenteditable",
-    undoDepth: 5,
-    tabindex: 0,
-  });
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      CodeMirrorInstance = CodeMirror.fromTextArea(editorEl, {
+        mode: "javascript",
+        tabSize: 2,
+        lineNumbers: true,
+        lineSeparator: 'A',
+        lineWrapping: true,
+        undoDepth: 5,
+        tabindex: 0,
+      });
+      resolve();
+    }, 0)
+  })
 }
 export function setCode(codeStr) {
-  CodeMirrorInstance.setValue(codeStr);
+  CodeMirrorInstance && CodeMirrorInstance.setValue(codeStr);
 }
 export function setCodeTitle(str) {
   const { liveEl } = getEl();
@@ -40,6 +49,7 @@ function initListener() {
   const { executeEl, resetEl, consoleCodeEl } = getEl();
 
   executeEl.addEventListener('click', function () {
+    consoleCodeEl.textContent = '';
     const activeCode = CodeMirrorInstance.getDoc().getValue();
     consoleCodeEl.classList.add("fade-in");
     try {
@@ -70,8 +80,10 @@ export function initData() {
 }
 export function init() {
   getEl();
-  initCodeMirror();
   initConsole();
-  initListener();
-  initData();
+  initCodeMirror().then(() => {
+    initListener();
+    initData();
+  });
 }
+init()

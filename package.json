@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "bundle exec jekyll serve",
-    "dev:drafts": "bundle exec jekyll serve --drafts"
+    "dev:drafts": "bundle exec jekyll serve --drafts",
+    "codemirror": "yarn workspace @jico/codemirror run"
   },
   "repository": {
     "type": "git",

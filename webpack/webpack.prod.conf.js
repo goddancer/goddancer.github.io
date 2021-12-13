@@ -16,7 +16,7 @@ var webpackConfig = merge(baseWebpackConfig, {
   output: {
     path: config.prod.assetsRoot + '/' + (projectName ? projectName : packageJSON.version),
     publicPath: '',
-    filename: path.posix.join('./', '[name].js?[contenthash:8]'),
+    filename: path.posix.join('./js/', '[name].js?[contenthash:8]'),
     chunkFilename: '[name].js',
   },
   plugins: [

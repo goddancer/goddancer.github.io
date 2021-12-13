@@ -3,9 +3,6 @@ const webpack = require('webpack');
 const { VueLoaderPlugin } = require('vue-loader');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-// const HtmlWebpackPluginWithVersion = require('./plugin/html-webpack-plugin-withversion');
-
 const pkg = require('../package.json');
 const config = require('../config/build.conf');
 const utils = require('./utils');
@@ -19,24 +16,23 @@ let isConcole = process.env.LOG === 'true';
 console.log('process.env.CONSOLE', isConcole);
 let projectName = process.env.PROJECT_NAME || 'common';
 console.log('process.env.projectName', projectName);
-const projectConfig = require('../config/project.config')[projectName];
 
 module.exports = {
   entry: {
-    app: projectConfig.entryIndex,
+    app: './src/main.js',
   },
   output: {
-    path: projectConfig.assetsRoot || config.prod.assetsRoot,
+    path: config.prod.assetsRoot,
     publicPath: isProd ? config.prod.assetsPublicPath : config.dev.assetsPublicPath,
-    filename: '[name].js',
+    filename: 'js/[name].js',
+    assetModuleFilename: 'img/[name][ext]?[hash:6]',
+    clean: true,
   },
   resolve: {
     modules: ['node_modules'],
     extensions: [' ', '.js', '.ts', '.vue', '.scss'],
-    alias: projectConfig.alias,
-    fallback: {
-      crypto: require.resolve('crypto-browserify'),
-      stream: require.resolve('stream-browserify'),
+    alias: {
+      '@': path.resolve(__dirname, '../src'),
     },
   },
   module: {
@@ -76,6 +72,9 @@ module.exports = {
             loader: 'css-loader',
           },
           {
+            loader: 'postcss-loader',
+          },
+          {
             loader: 'less-loader',
           },
         ],
@@ -93,12 +92,6 @@ module.exports = {
           {
             loader: 'sass-loader',
           },
-          {
-            loader: 'sass-resources-loader',
-            options: {
-              resources: path.join(srcDirPath, '/components/yf-comp/styles/theme.scss'),
-            },
-          },
         ],
       },
       {
@@ -107,46 +100,28 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url-loader',
-        include: [path.join(srcDirPath, '/assets/noHash')],
-        options: {
-          limit: 1000,
-          esModule: false,
-          name: utils.assetsPath('img/[name].[ext]'),
+        type: 'asset',
+        parser: {
+          dataUrlCondition: {
+            maxSize: 1000,
+          }
         },
-      },
-      {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url-loader',
-        exclude: [
-          path.join(srcDirPath, '/components/yf-comp/assets/icons'),
-          path.join(srcDirPath, '/assets/noHash'),
-        ],
-        options: {
-          limit: 10000,
-          esModule: false,
-          name: utils.assetsPath('img/[name].[hash:7].[ext]'),
-        },
-      },
-      {
-        test: /\.svg$/,
-        loader: 'svg-sprite-loader',
-        include: [path.join(srcDirPath, '/components/yf-comp/assets/icons')],
-        options: {
-          symbolId: 'icon-[name]',
-        },
+        /* generator: {
+          filename: 'img/[name][ext]?[hash:6]',
+        } */
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000,
-          name: utils.assetsPath('fonts/[name].[hash:7].[ext]'),
+        type: 'asset',
+        parser: {
+          dataUrlCondition: {
+            maxSize: 1000,
+          }
         },
       },
       {
         test: /.*\.preprocess\.htm/,
-        loader: path.resolve(__dirname, '../common-module/htmlEnv/wfhtml-loader.js'),
+        loader: 'html-loader',
         exclude: /(src\/vendor\/|node_modules)/,
       },
     ],
@@ -162,7 +137,7 @@ module.exports = {
       PROJECT_NAME: JSON.stringify(projectName),
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].css?[contenthash:8]',
+      filename: 'css/[name].css?[contenthash:6]',
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
@@ -174,9 +149,6 @@ module.exports = {
         removeAttributeQuotes: true,
       },
     }),
-    // new HtmlWebpackPluginWithVersion({
-    //   version: String(+new Date()).substring(6),
-    // }),
   ],
   optimization: {
     splitChunks: {
@@ -189,7 +161,7 @@ module.exports = {
           test: /node_modules/,
           priority: 1,
         },
-        vue: {
+        /* vue: {
           name: 'vue-vendors',
           test: module => {
             return (
@@ -243,21 +215,16 @@ module.exports = {
             // /[/]src[/]components[/]yf-comp[/]|[/]common-module[/]|[/]/
             return (
               module.resource &&
-              /[/]src[/]components[/]yf-comp[/]|[/]common-module[/]|@youyu/.test(module.resource)
+              /[/]common-module[/]/.test(module.resource)
             );
           },
-          priority: 1,
-        },
-        components: {
-          name: 'view-comps',
-          test: /[/]src[/]components[/]view-comp[/]|[/]src[/]assets[/]/,
           priority: 1,
         },
         lang: {
           name: 'lang',
           test: /[/]src[/]locales[/]/,
           priority: 1,
-        },
+        }, */
       },
     },
   },
