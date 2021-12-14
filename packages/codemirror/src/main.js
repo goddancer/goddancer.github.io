@@ -16,7 +16,6 @@ function initCodeMirror() {
         mode: "javascript",
         tabSize: 2,
         lineNumbers: true,
-        lineSeparator: 'A',
         lineWrapping: true,
         undoDepth: 5,
         tabindex: 0,

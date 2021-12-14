@@ -21,7 +21,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     new compressionWebpackPlugin({
       algorithm: 'gzip',
       test: new RegExp(`\\.(${['html', 'js', 'css'].join('.*|')}.*)$`),
-      threshold: 300 * 1000,
+      threshold: 100 * 1000,
       minRatio: 0.8,
     }),
   ],

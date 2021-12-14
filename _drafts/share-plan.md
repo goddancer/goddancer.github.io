@@ -10,7 +10,7 @@ keywords: keyword1, keyword2
 
 
 <!-- <iframe src="{{ site.url }}/demo/share/share.html"></iframe> -->
-<iframe name="code" class="code1" src="{{ site.url }}/packages/codemirror/src/index.html?el=iframe.code1">
+<iframe name="codemirror" src="{{ site.url }}/packages/codemirror/lib/index.html">
 console.log(123);
 console.log(123);
 function name(arg) {
