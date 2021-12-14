@@ -4,33 +4,26 @@ const { VueLoaderPlugin } = require('vue-loader');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const pkg = require('../package.json');
-const config = require('../config/build.conf');
-const utils = require('./utils');
-const srcDirPath = path.resolve(__dirname, '../src');
 const rootPath = path.resolve(__dirname, '../');
 
 const isProd = process.env.NODE_ENV === 'production';
 let isDebuger = process.env.DATA == 'debuger';
-console.log('process.env.DATA', isDebuger);
 let isConcole = process.env.LOG === 'true';
-console.log('process.env.CONSOLE', isConcole);
-let projectName = process.env.PROJECT_NAME || 'common';
-console.log('process.env.projectName', projectName);
 
 module.exports = {
   entry: {
     app: './src/main.js',
   },
   output: {
-    path: config.prod.assetsRoot,
-    publicPath: isProd ? config.prod.assetsPublicPath : config.dev.assetsPublicPath,
+    path: path.resolve(__dirname, '../dist'),
+    publicPath: isProd ? '/' : '/',
     filename: 'js/[name].js',
-    assetModuleFilename: 'img/[name][ext]?[hash:6]',
+    assetModuleFilename: 'img/[name][ext]?[hash:8]',
     clean: true,
   },
   resolve: {
     modules: ['node_modules'],
-    extensions: [' ', '.js', '.ts', '.vue', '.scss'],
+    extensions: [' ', '.js', '.ts', '.vue', '.less', '.scss'],
     alias: {
       '@': path.resolve(__dirname, '../src'),
     },
@@ -129,15 +122,14 @@ module.exports = {
   plugins: [
     new VueLoaderPlugin(),
     new webpack.DefinePlugin({
-      'process.env': config.dev.env,
+      'process.env': 'development',
       VERSION: JSON.stringify(pkg.version),
       ISDEBUGER: isDebuger,
       ISCONSOLE: isConcole,
       ENV: JSON.stringify(process.env.ENV),
-      PROJECT_NAME: JSON.stringify(projectName),
     }),
     new MiniCssExtractPlugin({
-      filename: 'css/[name].css?[contenthash:6]',
+      filename: 'css/[name].css?[contenthash:8]',
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
@@ -146,7 +138,7 @@ module.exports = {
       minify: {
         removeComments: true,
         collapseWhitespace: true,
-        removeAttributeQuotes: true,
+        removeAttributeQuotes: false,
       },
     }),
   ],

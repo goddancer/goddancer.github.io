@@ -3,18 +3,16 @@ const { merge } = require('webpack-merge');
 const compressionWebpackPlugin = require('compression-webpack-plugin');
 const webpackBundleAnalyzer = require('webpack-bundle-analyzer');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
-const config = require('../config/build.conf');
 const packageJSON = require('../package.json');
 const baseWebpackConfig = require('./webpack.base.conf');
 
-const projectName = process.env.PROJECT_NAME;
 const BundleAnalyzerPlugin = webpackBundleAnalyzer.BundleAnalyzerPlugin;
 
 var webpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
-  devtool: config.prod.productionSourceMap ? 'source-map' : false,
+  devtool: false,
   output: {
-    path: config.prod.assetsRoot + '/' + (projectName ? projectName : packageJSON.version),
+    path:  path.resolve(__dirname, '../dist') + '/' + packageJSON.version,
     publicPath: '',
     filename: path.posix.join('./js/', '[name].js?[contenthash:8]'),
     chunkFilename: '[name].js',
