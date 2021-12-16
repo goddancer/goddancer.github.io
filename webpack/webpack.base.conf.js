@@ -100,7 +100,7 @@ module.exports = {
           }
         },
         /* generator: {
-          filename: 'img/[name][ext]?[hash:6]',
+          filename: 'img/[name][ext]?[hash:8]',
         } */
       },
       {
