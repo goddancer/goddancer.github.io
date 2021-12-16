@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "bundle exec jekyll serve",
     "dev:drafts": "bundle exec jekyll serve --drafts",
-    "codemirror": "yarn workspace @jico/codemirror run"
+    "codemirror": "yarn workspace @jico/codemirror run",
+    "demo": "yarn workspace @jico/demo run"
   },
   "repository": {
     "type": "git",
