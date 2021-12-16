@@ -6,7 +6,7 @@ description: webpack5支持4种module types，来处理静态资源；不再需�
 keywords: webpack5, asset module
 ---
 
-> Asset Modules is a type of module that allows one to use asset files(fonts, icons, etc) without configuring addtional loaders.
+> Asset Modules is a type of module that allows one to use asset files(fonts, icons, etc) without configuring addtional loaders.[asset-modules](https://webpack.js.org/guides/asset-modules/#root)
 
 ![asset-module]({{site.url}}/mind/webpack5/asset-module.png)
 
