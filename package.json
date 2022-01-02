@@ -7,6 +7,7 @@
     "dev": "bundle exec jekyll serve",
     "dev:drafts": "bundle exec jekyll serve --drafts",
     "codemirror": "yarn workspace @jico/codemirror run",
+    "imageviewer": "yarn workspace @jico/imageviewer",
     "demo": "yarn workspace @jico/demo run"
   },
   "repository": {
@@ -22,7 +23,8 @@
       "packages/*"
     ],
     "nohoist": [
-      "**/codemirror"
+      "**/codemirror",
+      "**/viewerjs"
     ]
   },
   "bugs": {

@@ -83,5 +83,12 @@
       </script>
     </div>
     {% endif %}
+    <!-- image viewerjs -->
+    <script src="{{ site.url }}/assets/js/viewer.min.js"></script>
+    <script type="text/javascript">
+      window.onload = function() {
+        new window.Viewer(document.querySelector('body'))
+      }
+    </script>
 </body>
 </html>

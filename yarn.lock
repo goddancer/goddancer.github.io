@@ -1209,6 +1209,13 @@
   dependencies:
     "@types/estree" "*"
 
+"@types/viewerjs@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@types/viewerjs/-/viewerjs-1.0.2.tgz#f4a5b1ff376c74bc89ff6652f072a6217a596f8a"
+  integrity sha512-IQj7e29b6gRpkXbj8H5l0TlHsrCQP+YasYozr85aLX4No4UJgvthHUYbzFkSPUZdcNEKRCIJY+7rR4DTfC0AQw==
+  dependencies:
+    viewerjs "*"
+
 "@typescript-eslint/eslint-plugin@^5.6.0":
   version "5.6.0"
   resolved "http://10.9.19.151:7001/@typescript-eslint%2feslint-plugin/-/eslint-plugin-5.6.0.tgz#efd8668b3d6627c46ce722c2afe813928fe120a0"
@@ -6072,6 +6079,11 @@ vary@~1.1.2:
   version "1.1.2"
   resolved "http://10.9.19.151:7001/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
+
+viewerjs@*, viewerjs@^1.10.2:
+  version "1.10.2"
+  resolved "https://registry.yarnpkg.com/viewerjs/-/viewerjs-1.10.2.tgz#de16fa10668e4da6325969836a3264a046e3ef9a"
+  integrity sha512-v/4+OUF/71JthlvYuqfse+WGkMJO0LxvWiOLsAoxWw+RWjMdEBWn0ZQ5Mc+OhNIFd9uLhG62GzfFIplvix8odg==
 
 vue-loader@^16.5.0:
   version "16.5.0"
