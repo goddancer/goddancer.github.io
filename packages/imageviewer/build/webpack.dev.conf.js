@@ -4,6 +4,6 @@ const path = require('path');
 
 module.exports = merge(rootDevConf, {
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: path.resolve(__dirname, '../lib'),
   }
 });

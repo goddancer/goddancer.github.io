@@ -4,7 +4,7 @@ const path = require('path');
 
 module.exports = merge(rootProdConf, {
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: path.resolve(__dirname, '../lib'),
   },
   module: {
     rules: [

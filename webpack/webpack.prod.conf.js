@@ -30,6 +30,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     minimizer: [
       new TerserWebpackPlugin({
         parallel: 4,
+        extractComments: false,
         terserOptions: {
           toplevel: true,
           sourceMap: false,

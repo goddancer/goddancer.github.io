@@ -44,7 +44,10 @@
     }
   },
   "lint-staged": {
-    "*.{js,ts,json,css,vue,less,md}": ["prettier --write", "git add"]
+    "*.{js,ts,json,css,vue,less,md}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "engines": {
     "node": ">=14.0.0"
