@@ -3,7 +3,7 @@ layout: post
 title: 动态执行代码的几种方式
 categories: [javascript]
 description: 动态执行代码的几种方式
-keywords: createElement, new Function, eval
+keywords: execute javascript code, createElement, new Function, eval
 ---
 
 动态执行代码大概有几种方式：
