@@ -5,3 +5,11 @@
       url: https://www.git-tower.com/learn/git/ebook/cn/command-line/advanced-topics/git-flow,
     }
   ]
+  
+- category: nginx
+  page: [
+    {
+      name: nginx location讲解及匹配优先级,
+      url: https://github.com/mqyqingfeng/Blog/issues/242,
+    }
+  ]
