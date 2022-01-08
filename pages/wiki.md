@@ -26,7 +26,7 @@ permalink: /wiki/
     <strong>{{ category.category }}</strong>
     <ol type="1">
       {% for pageItem in category.page %}
-      <li><a href="{{ pageItem.url }}">{{ pageItem.name }}</a></li>
+      <li><a href="{{ pageItem.url }}" target="_blank">{{ pageItem.name }}</a></li>
       {% endfor %}
     </ol>
   </li>
@@ -41,7 +41,7 @@ permalink: /wiki/
     <strong>{{ category.category }}</strong>
     <ol type="1">
       {% for book in category.name %}
-      <li><a href="{{ site.url }}/books/{{ category.category }}/{{ book }}.pdf">{{ book }}</a></li>
+      <li><a href="{{ site.url }}/books/{{ category.category }}/{{ book }}.pdf" target="_blank">{{ book }}</a></li>
       {% endfor %}
     </ol>
   </li>
