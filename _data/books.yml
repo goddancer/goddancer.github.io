@@ -6,3 +6,6 @@
 
 - category: linux
   name: [The.Linux.Command.Line]
+
+- category: typescript
+  name: [typescript入门]
