@@ -6,8 +6,4 @@ description: some word here
 keywords: keyword1, keyword2
 ---
 
-Content here
-
----
-
-[1] [Nodejs打包构建时长优化](https://www.cnblogs.com/Dev0ps/p/15509671.html)
+![ci cd]({{site.url}}/mind/devops/ci-cd.png)
