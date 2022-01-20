@@ -1,0 +1,1 @@
+(()=>{"use strict";var t,r={345:t=>{t.exports="this is test text!"}},o={};function e(t){var n=o[t];if(void 0!==n)return n.exports;var s=o[t]={exports:{}};return r[t](s,s.exports,e),s.exports}t=e(345),window.onload=function(){document.body.innerHTML+=t}})();

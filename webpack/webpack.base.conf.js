@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const pkg = require('../package.json');
 const rootPath = path.resolve(__dirname, '../');
+const packageJSON = require('../package.json');
 
 const isProd = process.env.NODE_ENV === 'production';
 let isDebuger = process.env.DATA == 'debuger';
@@ -15,9 +16,10 @@ module.exports = {
     app: './src/main.js',
   },
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: path.resolve(__dirname, isProd ? `../dist/${packageJSON.version}` : '../dist'),
     publicPath: isProd ? '/' : '/',
-    filename: 'js/[name].js',
+    filename: path.posix.join('./js/', isProd ? '[name].js?[contenthash:8]' : 'js/[name].js'),
+    chunkFilename: '[name].js',
     assetModuleFilename: 'img/[name][ext]?[hash:8]',
     clean: true,
   },
@@ -44,6 +46,27 @@ module.exports = {
         test: /\.ts$/,
         loader: 'ts-loader',
         include: rootPath,
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        type: 'asset',
+        parser: {
+          dataUrlCondition: {
+            maxSize: 1000,
+          }
+        },
+        /* generator: {
+          filename: 'img/[name][ext]?[hash:8]',
+        } */
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        type: 'asset',
+        parser: {
+          dataUrlCondition: {
+            maxSize: 1000,
+          }
+        },
       },
       {
         test: /\.css$/,
@@ -90,27 +113,6 @@ module.exports = {
       {
         test: /\.html$/,
         loader: 'html-loader',
-      },
-      {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        type: 'asset',
-        parser: {
-          dataUrlCondition: {
-            maxSize: 1000,
-          }
-        },
-        /* generator: {
-          filename: 'img/[name][ext]?[hash:8]',
-        } */
-      },
-      {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        type: 'asset',
-        parser: {
-          dataUrlCondition: {
-            maxSize: 1000,
-          }
-        },
       },
       {
         test: /.*\.preprocess\.htm/,

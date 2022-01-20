@@ -30,7 +30,7 @@ keywords: keyword1, keyword2
 
 ### 2、可以用如下代码进行测试
 
-<iframe name="codemirror" src="{{ site.url }}/packages/codemirror/lib/index.html">
+<iframe name="codemirror" src="{{ site.url }}/packages/apps/codemirror/lib/index.html">
 const value1 = window.sessionStorage.getItem('key1');
 const value2 = window.sessionStorage.getItem('key2');
 if (!value1) {

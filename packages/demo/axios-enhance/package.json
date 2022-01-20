@@ -1,5 +1,5 @@
 {
-  "name": "@jico/demo",
+  "name": "@jico/axios-enchance",
   "version": "1.0.0",
   "private": true,
   "description": "",
@@ -11,7 +11,9 @@
   "keywords": [],
   "author": "jico",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "axios": "^0.24.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@babel/eslint-parser": "^7.16.3",
@@ -21,6 +23,7 @@
     "@babel/plugin-transform-typescript": "^7.16.1",
     "@babel/preset-env": "^7.16.4",
     "@babel/preset-typescript": "^7.16.0",
+    "@types/axios": "^0.14.0",
     "@types/codemirror": "^5.60.5",
     "@typescript-eslint/eslint-plugin": "^5.6.0",
     "@vue/compiler-sfc": "^3.2.26",

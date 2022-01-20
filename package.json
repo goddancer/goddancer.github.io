@@ -6,9 +6,10 @@
   "scripts": {
     "dev": "bundle exec jekyll serve",
     "dev:drafts": "bundle exec jekyll serve --drafts",
-    "codemirror": "yarn workspace @jico/codemirror run",
+    "codemirror": "yarn workspace @jico/codemirror",
     "imageviewer": "yarn workspace @jico/imageviewer",
-    "demo": "yarn workspace @jico/demo run"
+    "demo": "yarn workspace @jico/demo",
+    "axios": "yarn workspace @jico/axios-enchance"
   },
   "repository": {
     "type": "git",
@@ -20,11 +21,14 @@
   "license": "ISC",
   "workspaces": {
     "packages": [
-      "packages/*"
+      "packages/apps/*",
+      "packages/common",
+      "packages/demo/*"
     ],
     "nohoist": [
       "**/codemirror",
-      "**/viewerjs"
+      "**/viewerjs",
+      "**/axios"
     ]
   },
   "bugs": {
