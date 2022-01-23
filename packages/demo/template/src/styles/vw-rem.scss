@@ -1,0 +1,17 @@
+@mixin vw-rem($baseFontSize: 37.5Px, $designSize: 375Px, $bodyMinWidth: 320Px, $bodyMaxWidth: 540Px) {
+  html{
+    font-size: calc($baseFontSize / $designSize) * 100vw;
+    @media screen and (max-width: $bodyMinWidth) {
+      font-size: calc($baseFontSize * $bodyMinWidth / $designSize);
+    }
+    @media screen and (min-width: $bodyMaxWidth) {
+      font-size: calc($baseFontSize * $bodyMaxWidth / $designSize);
+    }
+  }
+}
+@include vw-rem();
+html{
+  @media screen and (max-width: 320px) {
+    font-size: 20px;
+  }
+}

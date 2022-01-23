@@ -8,6 +8,13 @@ module.exports = merge(rootProdConf, {
   output: {
     path: path.resolve(__dirname, USE_VERSION_PATH ? `../dist/${packageJSON.version}` : '../dist'),
   },
+  resolve: {
+    modules: ['node_modules'],
+    extensions: [' ', '.js', '.ts', '.vue', '.less', '.scss', 'css'],
+    alias: {
+      '@': path.resolve(__dirname, '../src'),
+    },
+  },
   module: {
     rules: [
       {

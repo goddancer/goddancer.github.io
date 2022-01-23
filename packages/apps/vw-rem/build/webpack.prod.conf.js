@@ -1,10 +1,13 @@
-const rootDevConf = require('../../../../webpack/webpack.dev.conf');
+const rootProdConf = require('../../../../webpack/webpack.prod.conf.js');
 const { merge } = require('webpack-merge');
 const path = require('path');
+const packageJSON = require('../package.json');
 
-module.exports = merge(rootDevConf, {
+const USE_VERSION_PATH = process.env.USE_VERSION_PATH === 'true';
+module.exports = merge(rootProdConf, {
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: path.resolve(__dirname, USE_VERSION_PATH ? `../dist/${packageJSON.version}` : '../lib'),
+    publicPath: '/packages/apps/vw-rem/lib',
   },
   resolve: {
     modules: ['node_modules'],

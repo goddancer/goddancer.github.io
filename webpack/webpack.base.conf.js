@@ -25,7 +25,7 @@ module.exports = {
   },
   resolve: {
     modules: ['node_modules'],
-    extensions: [' ', '.js', '.ts', '.vue', '.less', '.scss'],
+    extensions: [' ', '.js', '.ts', '.vue', '.less', '.scss', 'css'],
     alias: {
       '@': path.resolve(__dirname, '../src'),
     },
@@ -41,6 +41,9 @@ module.exports = {
         loader: 'babel-loader',
         include: rootPath,
         exclude: /node_modules/,
+        options: {
+          rootMode: 'upward',
+        },
       },
       {
         test: /\.ts$/,

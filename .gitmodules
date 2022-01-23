@@ -1,0 +1,3 @@
+[submodule "packages/npm"]
+	path = packages/npm
+	url = https://github.com/goddancer/npm.git
