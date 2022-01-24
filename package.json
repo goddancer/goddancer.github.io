@@ -9,8 +9,10 @@
     "codemirror": "yarn workspace @jico/codemirror",
     "imageviewer": "yarn workspace @jico/imageviewer",
     "demo": "yarn workspace @jico/demo",
+    "common": "yarn workspace @jico/common",
     "axios": "yarn workspace @jico/axios-enchance",
     "vw-rem": "yarn workspace @jico/vw-rem",
+    "directives": "yarn workspace @jico/vue-directives",
     "cp:template": "rsync -avr --exclude=\"./packages/demo/template/node_modules/*\" ./packages/demo/template/* ./packages/demo/new-template"
   },
   "repository": {

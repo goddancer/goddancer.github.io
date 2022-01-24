@@ -7,10 +7,10 @@ const USE_VERSION_PATH = process.env.USE_VERSION_PATH === 'true';
 module.exports = merge(rootProdConf, {
   output: {
     path: path.resolve(__dirname, USE_VERSION_PATH ? `../dist/${packageJSON.version}` : '../lib'),
-    publicPath: '/packages/apps/vw-rem/lib/',
+    publicPath: `/packages/apps/${packageJSON.name.split('/')[1]}/lib/`,
   },
   resolve: {
-    modules: ['node_modules'],
+    modules: [path.resolve(__dirname, '../node_modules'), path.resolve(__dirname, '../../../../node_modules')],
     extensions: [' ', '.js', '.ts', '.vue', '.less', '.scss', 'css'],
     alias: {
       '@': path.resolve(__dirname, '../src'),

@@ -132,6 +132,9 @@ module.exports = {
       ISDEBUGER: isDebuger,
       ISCONSOLE: isConcole,
       ENV: JSON.stringify(process.env.ENV),
+      // https://github.com/vuejs/core/tree/main/packages/vue#bundler-build-feature-flags
+      __VUE_OPTIONS_API__: 'true',
+      __VUE_PROD_DEVTOOLS__: 'false',
     }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].css?[contenthash:8]',
