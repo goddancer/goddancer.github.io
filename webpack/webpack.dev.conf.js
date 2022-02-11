@@ -14,7 +14,7 @@ module.exports = merge(baseWebpackConfig, {
     compress: true,
     hot: true,
     host: USE_HTTPS ? 'local-qa.goddancer.com' : 'local.goddancer.com',
-    port: 8082,
+    port: 'auto',
     https: USE_HTTPS,
     allowedHosts: ['local.goddancer.com', 'local-qa.goddancer.com'],
   },

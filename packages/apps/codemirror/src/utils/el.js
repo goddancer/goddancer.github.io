@@ -1,22 +1,20 @@
 export function getEl() {
-  const liveEl = document.querySelector('#live');
-  const editorEl = document.querySelector('#editor');
-  const executeEl = document.querySelector('#execute');
-  const resetEl = document.querySelector('#reset');
-  const consoleEl = document.querySelector('#console');
-  const consoleCodeEl = document.querySelector('#console code');
-  const iframeEl = self.frameElement;
+  const _els = {
+    liveEl: document.querySelector('#live'),
+    editorEl: document.querySelector('#editor'),
+    executeEl: document.querySelector('#execute'),
+    resetEl: document.querySelector('#reset'),
+    consoleEl: document.querySelector('#console'),
+    consoleCodeEl: document.querySelector('#console code'),
+    toggleEl: document.querySelector('#toggle'),
+    iframeEl: self.frameElement,
+  }
+  const _elNeedNotCheck = [_els.iframeEl]
+  const _elNeedCheckKeys = Object.keys(_els).filter(key => !_elNeedNotCheck.includes(_els[key]))
 
-  if ([liveEl, editorEl, executeEl, resetEl, consoleEl, consoleCodeEl].every(el => !!el)) {
-    getEl = () => ({
-      liveEl,
-      editorEl,
-      executeEl,
-      resetEl,
-      consoleEl,
-      consoleCodeEl,
-      iframeEl,
-    });
+  if (_elNeedCheckKeys.every(key => !!_els[key])) {
+    getEl = () => _els;
+    return _els
   } else {
     throw new Error('[CodeMirror init]: init el err!')
   }

@@ -475,9 +475,10 @@ header h4 {
   font-size: 14px;
   line-height: 1;
   cursor: pointer;
-}
-.button:first-child {
   margin-bottom: 0.5em;
+}
+.button:last-child {
+  margin-bottom: 0;
 }
 .button:hover {
   background-color: #333;

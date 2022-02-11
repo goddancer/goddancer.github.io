@@ -13,3 +13,27 @@
       url: https://github.com/mqyqingfeng/Blog/issues/242,
     }
   ]
+
+- category: vue
+  page: [
+    {
+      name: 【new】vue3 org,
+      url: https://vuejs.org/,
+    }
+  ]
+
+- category: SVG
+  page: [
+    {
+      name: SVG教程,
+      url: https://developer.mozilla.org/zh-CN/docs/Web/SVG/Tutorial,
+    }
+  ]
+
+- category: D3
+  page: [
+    {
+      name: d3js.org,
+      url: https://observablehq.com/@d3,
+    }
+  ]

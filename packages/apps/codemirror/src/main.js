@@ -4,6 +4,7 @@ import './styles/index.less'
 import 'codemirror/mode/javascript/javascript.js'
 import { writeOutput, formatOutput } from './utils/console-utils.js'
 import { getEl } from './utils/el.js'
+import * as d3 from 'd3'
 
 const DEFAULT_CODE_TEXT = `console.log('hola CodeMirror');`;
 let CodeMirrorInstance = null;
@@ -45,7 +46,7 @@ function initConsole() {
   }
 }
 function initListener() {
-  const { executeEl, resetEl, consoleCodeEl } = getEl();
+  const { executeEl, resetEl, consoleCodeEl, toggleEl, iframeEl } = getEl();
 
   executeEl.addEventListener('click', function () {
     consoleCodeEl.textContent = '';
@@ -60,9 +61,23 @@ function initListener() {
       consoleCodeEl.classList.remove("fade-in")
     }, false)
   }, false);
-  resetEl.addEventListener('click', function () {
+  resetEl.addEventListener('click', function() {
     window.location.reload();
   }, false);
+  toggleEl.addEventListener('click', function () {
+    if (!iframeEl) {
+      toggleEl.remove();
+      return
+    }
+    const _codeMirrorEl = document.querySelector('.CodeMirror')
+    if (parseInt(iframeEl.style.height) > 400) {
+      _codeMirrorEl.style.height = '200px'
+      iframeEl.style.height = '400px'
+    } else {
+      _codeMirrorEl.style.height = '400px'
+      iframeEl.style.height = '600px'
+    }
+  }, false)
 }
 export function initData() {
   const { iframeEl } = getEl();
@@ -77,12 +92,18 @@ export function initData() {
   _title && setCodeTitle(_title);
   setCode(_code);
 }
+function setFromAttribute() {
+  const { iframeEl } = getEl();
+  const _fontSize = iframeEl.getAttribute('font-size');
+  _fontSize && (document.querySelector('.CodeMirror').style.fontSize = `${parseFloat(_fontSize)}px`);
+}
 export function init() {
-  getEl();
+  window.d3 = d3
   initConsole();
   initCodeMirror().then(() => {
     initListener();
     initData();
+    setFromAttribute();
   });
 }
 init()

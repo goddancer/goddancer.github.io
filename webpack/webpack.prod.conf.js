@@ -9,7 +9,9 @@ const BundleAnalyzerPlugin = webpackBundleAnalyzer.BundleAnalyzerPlugin;
 var webpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
   devtool: false,
-  output: {},
+  output: {
+    publicPath: ''
+  },
   plugins: [
     new compressionWebpackPlugin({
       algorithm: 'gzip',
