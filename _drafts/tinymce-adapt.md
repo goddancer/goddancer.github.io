@@ -1,9 +1,9 @@
 ---
 layout: post
-title: template page
-categories: [cate1, cate2]
-description: some word here
-keywords: keyword1, keyword2
+title: 富文本编辑器使用指南
+categories: [case]
+description: rich text editor
+keywords: tinymce, rich text editor
 ---
 
 ## 富文本编辑器产出内容如何适配多端？

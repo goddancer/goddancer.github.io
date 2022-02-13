@@ -1,0 +1,15 @@
+<h3>Top</h3>
+<div id="blog-categories">
+  <ul class="list-group">
+    {% for post in site.posts %}
+    {% assign tags = post.tag %}
+    {% for tag in tags %}
+    <li class="list-group-item">
+      {% if tag == 'top' %}
+        <a href="{{post.url}}">{{ post.title }}</a>
+      {% endif %}
+    </li>
+    {% endfor %}
+    {% endfor %}
+  </ul>
+</div>

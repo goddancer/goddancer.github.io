@@ -36,6 +36,7 @@ comments: false
         <div class="column two-thirds" >
             <ol class="repo-list">
                 {% for post in paginator.posts %}
+                {% if post.categories[0] != 'hide' %}
                 <li class="repo-list-item">
                     <h3 class="repo-list-name">
                       <a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
@@ -49,17 +50,19 @@ comments: false
                         </span>
                         {% for cat in post.categories %}
                         <span class="meta-info">
-                          <span class="octicon octicon-file-directory"></span>
+                          <span class="octicon octicon-file-directory">{{cat}}</span>
                           <a href="{{ site.url }}/categories/#{{ cat }}" title="{{ cat }}">{{ cat }}</a>
                         </span>
                         {% endfor %}
                     </p>
                 </li>
+                {% endif %}
                 {% endfor %}
             </ol>
         </div>
         <div class="column one-third">
             {% include sidebar-search.html %}
+            {% include top.html %}
             {% include sidebar-qrcode.html %}
             {% include sidebar-popular-repo.html %}
         </div>
