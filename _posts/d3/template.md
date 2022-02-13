@@ -113,57 +113,6 @@ d3.range([10, 20, 30, 23, 13, 40, 27, 35, 20]) // [0, 1, 2, 3, 4, 5, 6, 7, 8]
 ```
 
 ```javascript
-const xScale = d3.scaleBand()
-    .paddingOuter(0)
-    .domain(d3.range(dataSet.length))
-    .range([0, 380])
-  const yScale = d3.scaleLinear()
-    .domain([0, d3.max(dataSet) + 10])
-    .range([380, 0])
-  const xAxis = d3.axisBottom(xScale)
-  const yAxis = d3.axisLeft(yScale)
-
-  const g = svg.append('g')
-    .attr('transform', 'translate(10, 10)')
-  const gs = g.selectAll(".rect")
-    .data(dataSet)
-    .enter()
-    .append("g")
-    .attr('transform', 'translate(20, 0)')
-  const rectPadding = 20
-  gs.append("rect")
-    .attr("x",function(d,i){
-        return xScale(i)+rectPadding/2;
-    })	
-    .attr("y",function(d){
-        return yScale(d);
-    })
-    .attr("width",function(){
-        return xScale.step()-rectPadding;
-    })
-    .attr("height",function(d){
-        return 400 - 20 - yScale(d);
-    })
-    .attr("fill", "blue")
-  gs.append("text")
-    .attr("x",function(d,i){
-        return xScale(i)+rectPadding/2;
-    })
-    .attr("y",function(d){
-    return yScale(d) - 30;
-    })
-    .attr("dx",function(){
-        (xScale.step()-rectPadding)/2;
-    })
-    .attr("dy", 20)
-    .attr('font-size', 20)
-    .text(d => d)
-  g.append('g')
-    .attr('transform', 'translate(20, 380)')
-    .call(xAxis)
-  g.append('g')
-    .attr('transform', 'translate(20, 0)')
-    .call(yAxis)
 ```
 
 ## 添加动画
