@@ -122,6 +122,7 @@ function chart1() {
   const xScale = d3.scaleLinear()
     .domain([0, 100])
     .range([0, 300])
+  d3.selectAll('svg').remove()
   const g = svg.append('g')
     .attr('transform', 'translate(10, 10)')  
   g.selectAll('rect')
