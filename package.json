@@ -10,6 +10,7 @@
     "imageviewer": "yarn workspace @jico/imageviewer",
     "demo": "yarn workspace @jico/demo",
     "d3": "yarn workspace @jico/d3",
+    "svg": "yarn workspace @jico/svg",
     "scroll": "yarn workspace @jico/virtual-scroll",
     "common": "yarn workspace @jico/common",
     "axios": "yarn workspace @jico/axios-enchance",
