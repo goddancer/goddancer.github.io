@@ -7,7 +7,17 @@ import { Progress, Popover, Loading, Overlay } from 'vant'
 import installDirectives from '@jico/common/vue-directives'
 import i18n from '@/locales'
 
-const app = createApp(App)
+document.addEventListener('DOMContentLoaded', (event) => {
+    alert('domloaded')
+  });
+// setTimeout(() => {
+for (let i = 0; i < 10000; i++){
+  for (let i = 0; i < 10000; i++){
+    //
+  }
+}
+  alert('in mainjs')
+  const app = createApp(App)
 app
   .use(router)
   .use(i18n)
@@ -17,3 +27,5 @@ app
   .use(Overlay)
   .use(installDirectives)
   .mount('#app')
+// }, 0)
+

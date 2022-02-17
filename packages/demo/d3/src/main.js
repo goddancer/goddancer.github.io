@@ -119,19 +119,21 @@ function chart1() {
   const svg = createSvg()
   // 水平柱的长度
   const dataSet = [10, 30, 70, 20, 50, 60]
+  // 创建线性比例尺，放大坐标范围
   const xScale = d3.scaleLinear()
     .domain([0, 100])
     .range([0, 300])
+  // 整体偏移位置计算
   const g = svg.append('g')
-    .attr('transform', 'translate(10, 10)')  
+    .attr('transform', 'translate(10, 10)')
   g.selectAll('rect')
     .data(dataSet)
     .enter()
     .append('rect')
     .attr('x', 0) // 矩形左上角x坐标
     .attr('y', (d, i) => i * 20) // 矩形左上角y坐标
-    .attr('width', 0)
-    .attr('height', 10)
+    .attr('width', 0) // X轴方向长度
+    .attr('height', 10) // Y轴方向长度
     .attr('fill', 'blue')
     .transition()
     .duration(500)
@@ -241,36 +243,51 @@ function chart3() {
   }
   const dataSet = [241293920, 995563500, 694776580, 637173340, 1157584880, 303447920]
   const color = ["#BA2828", "#F75050", "#FF9898", "#55DAAA", "#09986D", "#006646"]
+  const svg = createSvg(_config)
+  // 非线性颜色比例尺
   const colorScale = d3.scaleOrdinal()
     .domain(d3.range(dataSet.length))
-    .range(color) // 生成离散色彩
-  const svg = createSvg(_config)
-  
-  const arc = d3.arc() // 弧形生成器
-    .innerRadius(60 - 14) // 设置内半径
-    .outerRadius(60) // 设置外半径
-    .cornerRadius(0) // 设置拐角半径
-    .startAngle(d => Math.PI * 2 - d.startAngle)
-    .endAngle(d => Math.PI * 2 - d.endAngle)
-    .padAngle(0.01)
-  
+    .range(color)
+  // 弧型生成器
+  const arc = d3.arc()
+    .innerRadius(60 - 14) // 弧型内圈半径
+    .outerRadius(60) // 弧型外圈半径
+    .cornerRadius(0) // 弧型拐角半径
+    .startAngle(d => Math.PI * 2 - d.startAngle) // 弧型起始弧度。这里结合饼图生成的弧度坐标信息使用
+    .endAngle(d => Math.PI * 2 - d.endAngle) // 弧型结束弧度。这里结合饼图生成的弧度坐标信息使用
+    .padAngle(Math.PI / 180) // 间隙对应弧度
+  // 饼图生成器
   const pie = d3.pie()
-    .sort(d => d.index)
-  console.log('pie: ', pie(dataSet));
-
-  svg.append('g')
-    .attr('transform', `translate(${_config.margin.left}, ${_config.margin.top})`).append('g')
+    .sort(d => d.index) // 饼图对传入数据做默认排序，这里是使用传入数据的顺序
+  // 做整体位置偏移计算
+  const g1 = svg.append('g')
+    .attr('transform', `translate(${_config.margin.left}, ${_config.margin.top})`)
+  // 创建灰色底图
+  const g2 = g1.append('g')
     .append('path')
     .attr('fill', '#3F4247')
-    .attr('d', arc(pie([1])[0]))
-  const g = svg.append('g')
-    .attr('transform', `translate(${_config.margin.left}, ${_config.margin.top})`)
-  const gs = g.selectAll('path')
-    .data(pie(dataSet))
+    .attr('d', arc(pie([1])[0])) // pie([1])只有一个数据时为360度，全比例。pie([1])[0]返回饼图对应角度信息。arc计算弧度
+  // 渲染数据图
+  const g3 = g1.append('g')
+    .selectAll('path')
+    .data(pie(dataSet)) // pie(dataSet)根据数据生成饼图信息
     .enter()
     .append('path')
-    .attr('d', d => arc(d))
-    .attr('fill', (d, i) => colorScale(i))
+    .attr('d', d => arc(d)) // 根据饼图信息计算弧度信息
+    .attr('fill', (d, i) => colorScale(i)) // 元素index映射非线性比例尺
+  g1.append('text')
+    .text('+10000')
+    .attr('fill', '#F75050')
+    .attr('text-anchor', 'middle') // 文本锚点定位
+    .attr('font-size', '15px')
+    .attr('y', 5)
+  g1.append('text')
+    .text('净流入')
+    .attr('fill', d3.rgb(255, 255, 255, 0.5))
+    .attr('text-anchor', 'middle')
+    .attr('font-size', '10px')
+    .attr('y', 20)
+  
 }
 // chart1()
 // chart2()

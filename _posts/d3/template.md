@@ -132,7 +132,19 @@ d3.range([10, 20, 30, 23, 13, 40, 27, 35, 20]) // [0, 1, 2, 3, 4, 5, 6, 7, 8]
 `startAngle`: 弧度以12点钟为0度方向，顺时针为正
 
 ```javascript
+g.append('text')
+        .text(`${t('Net')}${value >= 0 ? t('Inflow') : t('Outflow')}`)
+        .attr('fill', d3.rgb(255, 255, 255, 0.5))
+        .attr('text-anchor', 'middle')
+        .attr('font-size', '10px')
+        .attr('y', 20)
 
+      g.append('text')
+        .text(noData ? t('NoData') : (value > 0 ? '+' : '') + formatMoney(value))
+        .attr('fill', noData ? d3.rgb(255, 255, 255, 0.5) : value === 0 ? textColor : value > 0 ? this.c.upColor : this.c.downColor)
+        .attr('text-anchor', 'middle')
+        .attr('font-size', '15px')
+        .attr('y', 5)
 ```
 
 ```javascript

@@ -143,6 +143,7 @@ module.exports = {
       filename: 'index.html',
       template: 'src/index.preprocess.htm',
       inject: true,
+      scriptLoading: 'blocking',
       minify: {
         removeComments: true,
         collapseWhitespace: true,

@@ -30,6 +30,10 @@ export default {
     const [isLoading] = useLoading()
     const { proxy } = getCurrentInstance()
     onMounted(() => {
+      alert('vue onmounted')
+      setTimeout(() => {
+        alert('宏任务')
+      }, 1)
       document.documentElement.setAttribute('data-lang', LANG)
     })
 
@@ -49,6 +53,11 @@ export default {
     },
   },
   computed: {},
+  mounted() {
+    this.$nextTick(() => {
+      alert('micro task')
+    })
+  },
 }
 </script>
 
