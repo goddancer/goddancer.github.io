@@ -124,6 +124,7 @@ function chart1() {
     .domain([0, 100])
     .range([0, 300])
   // 整体偏移位置计算
+  d3.selectAll('svg').remove()
   const g = svg.append('g')
     .attr('transform', 'translate(10, 10)')
   g.selectAll('rect')

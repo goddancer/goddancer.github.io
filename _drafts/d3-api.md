@@ -1,14 +1,14 @@
 ---
 layout: post
-title: d3
+title: d3 basic api
 categories: [d3]
-description: d3
+description: d3 basic api
 keywords: d3, chart, svg
 ---
 
-### 理解`update`|`enter`|`exit`
+## 理解`update`|`enter`|`exit`
 
-* `update`: 当对应的元素数量正好和需要绑定的数据数量一致时。此时直接操作即可，后面可以直接跟`text`|`style`等操作
+* `update`: 当对应的元素数量正好和需要绑定的数据数量一致时。此时直接操作即可，后面可以直接跟`text`、`style`等操作
 
 ```javascript
 ```
@@ -125,7 +125,7 @@ d3.range([10, 20, 30, 23, 13, 40, 27, 35, 20]) // [0, 1, 2, 3, 4, 5, 6, 7, 8]
 .delay((d, i) => i * 100) // 每个元素逐渐动画，否则整体动画
 ```
 
-## `d3.arc()`弧形生成器
+## `arc`弧形生成器
 
 > `Math.PI`为弧度`180deg`.[推导过程]({{site.url}}/_posts/math/2022-02-11-radian.md)
 
