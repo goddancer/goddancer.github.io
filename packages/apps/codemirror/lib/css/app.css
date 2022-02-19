@@ -519,5 +519,11 @@ header h4 {
     flex: 10 150px;
     align-items: center;
   }
+  .output code {
+    flex: 1;
+  }
+  .output div {
+    flex: 1;
+  }
 }
 
