@@ -47,12 +47,20 @@ document.body.addEventListener('touchmove', function(ev) {
 * `document`
 * `document.body`
 
-### demo
+## `fixed & overflow`
+
+### 思路
+
+**通过`fixed`定位以及`overflow: hidden`动态切换，使可滚动区域固定**
+
+### 注意
+
+**部分场景可能需要结合`scrollTop`使用，防止视图位置**
+## demo
 
 在chrome浏览器中，切换到手机模式，执行这段代码并尝试手势滑动页面
 
-<iframe name="codemirror" font-size="14" src="{{ site.url }}/packages/apps/codemirror/lib/index.html">
-
+<iframe name="codemirror" font-size="14" src="{{ site.url }}/packages/apps/vue3-template/lib/index.html#/freeze-scroll">
 </iframe>
 
 --

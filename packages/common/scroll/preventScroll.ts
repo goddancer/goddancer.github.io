@@ -6,6 +6,7 @@
 class PreventScroll {
   private _dataAttrKey = 'data-prevent-scroll'
   private _passiveSupported = false
+  private _preventStatus: boolean = false
   private _el: HTMLElement | Element
   private _checkPassive(): void {
     const _this = this
@@ -44,14 +45,21 @@ class PreventScroll {
     return this._passiveSupported
   }
 
+  get preventStatus(): boolean {
+    return this._preventStatus
+  }
+
   enable(): void {
     this._el.setAttribute(this._dataAttrKey, 'true')
     this._catchViewScrolling(true)
+    this._preventStatus = true
   }
 
   disable(): void {
     this._el.removeAttribute(this._dataAttrKey)
     this._catchViewScrolling(false)
+    this._preventStatus = false
   }
 }
-export const preventScroll = new PreventScroll()
+export const preventBodyScroll = new PreventScroll()
+export default PreventScroll
