@@ -1,9 +1,9 @@
 ---
 layout: post
-title: template page
-categories: [cate1, cate2]
-description: some word here
-keywords: keyword1, keyword2
+title: passive support check
+categories: [javascript]
+description: passive support check
+keywords: passive
 ---
 
 ### 利用`property getter setter`

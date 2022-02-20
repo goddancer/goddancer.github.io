@@ -112,6 +112,7 @@ plugins:
     - jekyll-sitemap
     - jekyll-feed
     - jemoji
+    - jelyll-gist
 #     - jekyll-mentions
 collections:
     wiki:
