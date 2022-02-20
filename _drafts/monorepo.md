@@ -84,3 +84,7 @@ keywords: monorepo, mono-repo
   ]
 }
 ```
+
+--
+
+[1] [项目级 monorepo 策略最佳实践](https://segmentfault.com/a/1190000039157365)

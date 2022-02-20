@@ -144,3 +144,7 @@ d3.range([10, 20, 30, 23, 13, 40, 27, 35, 20]) // [0, 1, 2, 3, 4, 5, 6, 7, 8]
 
 ```
 
+--
+
+[1] [d3 API](https://github.com/xswei/d3js_doc/blob/master/API_Reference/API.md)
+[2] [d3入门教程](https://juejin.cn/post/6982089492991574047#heading-24)

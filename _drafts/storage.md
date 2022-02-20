@@ -42,3 +42,9 @@ if (!value2) {
 console.log('value1: ', value1);
 console.log('value2: ', value2);
 </iframe>
+
+// TODO：存储方案对比图
+
+--
+
+[1] [localstorage的跨域存储方案](https://www.jianshu.com/p/e86d92aeae69)
