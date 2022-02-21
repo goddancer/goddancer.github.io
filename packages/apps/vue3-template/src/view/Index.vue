@@ -3,6 +3,7 @@
     <div class="clear">
       <div class="entry" @click="to('directives')">v-directives</div>
       <div class="entry" @click="to('freeze-scroll')">FreezeScroll</div>
+      <div class="entry" @click="to('better-scroll')">BetterScroll</div>
     </div>
   </div>
 </template>
