@@ -1,7 +1,7 @@
 ---
 layout: post
 title: eTLD
-categories: [javascript]
+categories: [Javascript]
 description: eTLD
 keywords: eTLD
 ---

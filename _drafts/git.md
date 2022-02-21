@@ -1,7 +1,7 @@
 ---
 layout: post
 title: git use case
-categories: [git]
+categories: [Git]
 description: git use case
 keywords: git
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: axios enhance
-categories: [javascript]
+categories: [Javascript]
 description: axios enhance
 keywords: axios enhance
 ---

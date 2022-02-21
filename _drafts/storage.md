@@ -1,7 +1,7 @@
 ---
 layout: post
 title: localStorage、sessionStorage、sessionCookie
-categories: [javascript]
+categories: [Javascript]
 description: some word here
 keywords: keyword1, keyword2
 ---

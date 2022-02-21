@@ -1,7 +1,7 @@
 ---
 layout: post
 title: share data between cross subdomain page safety
-categories: [javascript, scenes]
+categories: [Javascript, Scenes]
 description: how to share data between cross subdomain page safety
 keywords: storage, share data
 ---

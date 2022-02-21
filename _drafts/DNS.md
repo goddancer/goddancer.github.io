@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 域名解析
-categories: [dns]
+categories: [DNS]
 description: 域名解析
 keywords: CNAME, dns
 ---

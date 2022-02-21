@@ -1,7 +1,7 @@
 ---
 layout: post
 title: devOps
-categories: [devOps]
+categories: [DevOps]
 description: devOps
 keywords: devOps
 ---

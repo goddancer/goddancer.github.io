@@ -1,7 +1,7 @@
 ---
 layout: post
 title: webpack devServer
-categories: [webpack]
+categories: [Webpack]
 description: webpack devServer
 keywords: webpack, devServer
 ---

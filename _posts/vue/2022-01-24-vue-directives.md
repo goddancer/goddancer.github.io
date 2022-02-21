@@ -1,7 +1,7 @@
 ---
 layout: post
 title: vue-directives
-categories: [vue]
+categories: [Vue]
 description: vue-directives
 keywords: vue, directive, vue-directive, vue-directives
 ---

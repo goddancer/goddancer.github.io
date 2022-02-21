@@ -1,7 +1,7 @@
 ---
 layout: post
 title: nginx配合history路由模式
-categories: [nginx]
+categories: [Nginx]
 description: nginx配合history路由模式
 keywords: nginx, router, history
 ---

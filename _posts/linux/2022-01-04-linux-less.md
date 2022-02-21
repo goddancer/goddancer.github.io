@@ -1,7 +1,7 @@
 ---
 layout: post
 title: less
-categories: [linux]
+categories: [Linux]
 description: linux cmd less
 keywords: linux, less, cmd
 ---

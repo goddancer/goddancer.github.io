@@ -1,7 +1,7 @@
 ---
 layout: post
 title: image viewer
-categories: [code, case]
+categories: [Code, Case]
 description: case of image viewer
 keywords: image viewer, code case
 ---

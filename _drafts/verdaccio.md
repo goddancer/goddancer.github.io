@@ -1,7 +1,7 @@
 ---
 layout: post
 title: verdaccio npm
-categories: [devOps]
+categories: [DevOps]
 description: verdaccio npm
 keywords: verdaccio, npm
 ---

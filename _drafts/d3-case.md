@@ -1,7 +1,7 @@
 ---
 layout: post
 title: d3 case
-categories: [d3]
+categories: [D3]
 description: d3 case
 keywords: d3 case
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: d3 basic charts
-categories: [d3]
+categories: [D3]
 description: d3 basic charts
 keywords: d3, charts
 ---

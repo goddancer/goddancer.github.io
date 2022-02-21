@@ -1,7 +1,7 @@
 ---
 layout: post
 title: url-parser
-categories: [javascript]
+categories: [Javascript]
 description: url-parser
 keywords: url-parser
 ---

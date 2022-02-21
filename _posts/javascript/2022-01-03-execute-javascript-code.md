@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 动态执行代码的几种方式
-categories: [javascript]
+categories: [Javascript]
 description: 动态执行代码的几种方式
 keywords: execute javascript code, createElement, new Function, eval
 ---

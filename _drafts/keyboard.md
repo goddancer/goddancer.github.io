@@ -1,7 +1,7 @@
 ---
 layout: post
 title: keyboard
-categories: [javascript]
+categories: [Javascript]
 description: keyboard
 keywords: keyboard
 ---

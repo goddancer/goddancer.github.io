@@ -1,7 +1,7 @@
 ---
 layout: post
 title: typescript use case
-categories: [typescript]
+categories: [Typescript]
 description: typescript use case
 keywords: typescript, record, keyof, typeof
 ---

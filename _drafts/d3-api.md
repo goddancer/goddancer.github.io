@@ -1,7 +1,7 @@
 ---
 layout: post
 title: d3 basic api
-categories: [d3]
+categories: [D3]
 description: d3 basic api
 keywords: d3, chart, svg
 ---

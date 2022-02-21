@@ -1,7 +1,7 @@
 ---
 layout: post
 title: freeze-scroll
-categories: [javascript]
+categories: [Javascript]
 description: freeze scroll with passive or position fixed
 keywords: freeze scroll, passive, fixed
 ---

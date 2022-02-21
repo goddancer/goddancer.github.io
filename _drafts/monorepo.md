@@ -1,7 +1,7 @@
 ---
 layout: post
 title: mono-repo
-categories: [javascript]
+categories: [Javascript]
 description: mono-repo
 keywords: monorepo, mono-repo
 ---

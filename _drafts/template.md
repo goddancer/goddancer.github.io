@@ -1,7 +1,7 @@
 ---
 layout: post
 title: jekyll usecage demo
-categories: [jekyll]
+categories: [Jekyll]
 description: jekyll usecage demo
 keywords: jekyll
 ---
@@ -46,6 +46,6 @@ function hello() {
 ```
 {% gist goddancer/909921aefdccd54d88eeab4ea0a9e995 %}
 
---
+---
 
 [1] [Nodejs打包构建时长优化](https://www.cnblogs.com/Dev0ps/p/15509671.html)

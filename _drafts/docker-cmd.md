@@ -1,7 +1,7 @@
 ---
 layout: post
 title: docker command
-categories: [docker]
+categories: [Docker]
 description: docker command
 keywords: docker
 ---

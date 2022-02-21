@@ -1,7 +1,7 @@
 ---
 layout: post
 title: passive support check
-categories: [javascript]
+categories: [Javascript]
 description: passive support check
 keywords: passive
 ---

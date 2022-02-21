@@ -1,7 +1,7 @@
 ---
 layout: post
 title: webpack clean dist dir
-categories: [webpack, webpack5]
+categories: [Webpack, Webpack5]
 description: webpack output.clean
 keywords: webpack, output.clean
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 富文本编辑器使用指南
-categories: [case]
+categories: [Case]
 description: rich text editor
 keywords: tinymce, rich text editor
 ---
