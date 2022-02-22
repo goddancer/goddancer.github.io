@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "bundle exec jekyll serve",
-    "dev:drafts": "bundle exec jekyll serve --drafts --incremental",
+    "dev:drafts": "bundle exec jekyll serve --drafts",
     "codemirror": "yarn workspace @jico/codemirror",
     "imageviewer": "yarn workspace @jico/imageviewer",
     "demo": "yarn workspace @jico/demo",
