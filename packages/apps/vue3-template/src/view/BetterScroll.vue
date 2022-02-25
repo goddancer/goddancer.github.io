@@ -22,7 +22,7 @@ import { ref, inject, nextTick } from 'vue'
 import BScroll from 'better-scroll'
 
 export default {
-  name: 'Index',
+  name: 'BetterScroll',
   data() {
     return {
     }

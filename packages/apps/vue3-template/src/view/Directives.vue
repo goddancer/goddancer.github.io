@@ -20,7 +20,7 @@
 import { toRefs, inject } from 'vue'
 
 export default {
-  name: 'Index',
+  name: 'Directives',
   data() {
     return {
       debounceData: [],

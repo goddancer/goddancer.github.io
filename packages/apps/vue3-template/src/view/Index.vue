@@ -1,16 +1,22 @@
 <template>
   <div class="container">
     <div class="clear">
-      <div class="entry" @click="to('directives')">v-directives</div>
-      <div class="entry" @click="to('freeze-scroll')">FreezeScroll</div>
-      <div class="entry" @click="to('better-scroll')">BetterScroll</div>
+      <div 
+        class="entry" 
+        v-for="(item, index) in validPath"
+        :key="index"
+        @click="to(item.path)"
+      >
+        {{ item.name }}
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { toRefs, inject } from 'vue'
+import { toRefs, inject, reactive } from 'vue'
 import { useRouter } from 'vue-router'
+import { routes } from '@/router'
 
 export default {
   name: 'Index',
@@ -23,16 +29,16 @@ export default {
     const router = useRouter()
     const to = (path) => {
       router.push(path)
-    } 
+    }
+    const validPath = reactive(routes.filter(it => it.path !== '/'))
 
     return {
       t,
       to,
+      validPath,
     }
   },
   methods: {
-    routerGo(path) {
-    },
   },
 }
 </script>

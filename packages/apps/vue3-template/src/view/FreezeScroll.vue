@@ -16,7 +16,7 @@ import { preventBodyScroll } from '@jico/common/scroll/preventScroll'
 import FreezeScroll from '@jico/common/scroll/freezeScroll'
 
 export default {
-  name: 'Index',
+  name: 'FreezeScroll',
   data() {
     return {
     }

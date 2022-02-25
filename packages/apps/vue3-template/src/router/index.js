@@ -5,7 +5,9 @@ const Index = () => import(/* webpackChunkName: "Index" */ '../view/Index.vue')
 const Directives = () => import(/* webpackChunkName: "Directives" */ '../view/Directives.vue')
 const FreezeScroll = () => import(/* webpackChunkName: "FreezeScroll" */ '../view/FreezeScroll.vue')
 const BetterScroll = () => import(/* webpackChunkName: "BetterScroll" */ '../view/BetterScroll.vue')
-const routes = [
+const Test = () => import(/* webpackChunkName: "Test" */ '../view/Test.vue')
+const VirtualScroll = () => import(/* webpackChunkName: "VirtualScroll" */ '../view/VirtualScroll.vue')
+export const routes = [
   {
     path: '/',
     component: Index,
@@ -25,6 +27,16 @@ const routes = [
     path: '/better-scroll',
     component: BetterScroll,
     name: 'BetterScroll',
+  },
+  {
+    path: '/test',
+    component: Test,
+    name: 'Test',
+  },
+  {
+    path: '/virtual-scroll',
+    component: VirtualScroll,
+    name: 'VirtualScroll',
   },
 ]
 const router = createRouter({
