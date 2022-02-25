@@ -7,6 +7,7 @@ const FreezeScroll = () => import(/* webpackChunkName: "FreezeScroll" */ '../vie
 const BetterScroll = () => import(/* webpackChunkName: "BetterScroll" */ '../view/BetterScroll.vue')
 const Test = () => import(/* webpackChunkName: "Test" */ '../view/Test.vue')
 const VirtualScroll = () => import(/* webpackChunkName: "VirtualScroll" */ '../view/VirtualScroll.vue')
+const FilterList = () => import(/* webpackChunkName: "FilterList" */ '../view/FilterList.vue')
 export const routes = [
   {
     path: '/',
@@ -37,6 +38,11 @@ export const routes = [
     path: '/virtual-scroll',
     component: VirtualScroll,
     name: 'VirtualScroll',
+  },
+  {
+    path: '/filter-list',
+    component: FilterList,
+    name: 'FilterList',
   },
 ]
 const router = createRouter({
