@@ -47,8 +47,18 @@ module.exports = {
       },
       {
         test: /\.ts$/,
+        /* use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              rootMode: 'upward',
+            },
+          },
+          'ts-loader',
+        ], */
         loader: 'ts-loader',
         include: rootPath,
+        exclude: /node_modules/,
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -153,13 +163,13 @@ module.exports = {
   ],
   optimization: {
     splitChunks: {
-      chunks: 'all',
+      chunks: 'async', // 设置成all有时会导致代码运行时报错，很奇怪，拆分误伤？
       minSize: 30000,
       automaticNameDelimiter: '.',
       cacheGroups: {
         vendors: {
           name: 'vendors',
-          test: /node_modules/,
+          test: /[\\/]node_modules[\\/]/,
           priority: 1,
         },
         /* vue: {

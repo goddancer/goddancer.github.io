@@ -1,168 +1,253 @@
 <template>
   <div class="filter-list-container">
+    <div class="mask" ref="filterMaskEl"></div>
     <div 
       class="filter-list-wrap"
-      @touchstart="hlTouchStart"
-      @touchmove="hlTouchMove"
-      @touchend="hlTouchEnd"
+      ref="filterList"
     >
       <div class="filter-bar clear">
         <div class="filter-items-left">名称</div>
         <div class="filter-items-right">
           <div 
             class="scrollx-wrap"
-            ref="filter-bar-right"
+            ref="filterBarEl"
           >
             <div 
               class="scroll-item"
-              v-for="item in 6"
+              v-for="item in filterBar"
             >
-              <div class="text">价格</div>
+              <div class="text">{{ item.text }}</div>
               <div class="sort-icon"></div>
             </div>
           </div>
         </div>
       </div>
-      <div class="filter-content">
-        <div class="content-left">
-          <div 
-            class="left-item"
-            v-for="item in 20"
-          >123123123</div>
-        </div>
-        <div class="content-right">
-          <div 
-            class="scrollx-wrap"
-            ref="scrollx-wrap"
-          >
-            <div 
-              class="right-line-x"
-              v-for="item in 20"
+
+      <van-pull-refresh 
+        v-model="pullLoading" 
+        @refresh="onRefresh" 
+        :disabled="data.pullRefreshDisabled"
+      >
+        <div class="filter-content" ref="filterContent">
+          <div class="content-left">
+            <van-list
+              v-model:loading="data.loadMoreLoading"
+              :finished="loadMoreFinished"
+              @load="loadMore"
             >
               <div 
-                class="right-item"
-                v-for="item in 6"
-              >222.00</div>
+                class="left-item"
+                v-for="item in filterData"
+              >
+                <slot name="content-left" :="{ item }">
+                  <div class="title">腾讯控股</div>
+                  <div class="code">00700</div>
+                  <div class="icon"></div>
+                </slot>
+              </div>
+            </van-list>
+          </div>
+          <div class="content-right">
+            <div 
+              class="scrollx-wrap"
+              ref="scrollXContentEl"
+            >
+              <div 
+                class="right-line-x"
+                v-for="section in filterData"
+                :style="{width: `${data.scrollXWidth}px`}"
+              >
+                <div 
+                  class="right-item"
+                  v-for="(item, index) in filterBar.length"
+                >
+                  <slot name="content-right" :="{ section }">
+                    <div class="price-top">{{ section[`price${index + 1}`] }}</div>
+                    <div class="price-bottom">{{ section[`price${index + 1}`] }}</div>
+                  </slot>
+                </div>
+                <div class="fake-border-bottom"></div>
+              </div>
             </div>
           </div>
+          <div class="fake-right">
+            <div 
+              class="fake-boder-bottom"
+              v-for="item in filterData"
+            ></div>
+          </div>
         </div>
-      </div>
+      </van-pull-refresh>
     </div>
   </div>
 </template>
 
 <script>
-import { inject } from 'vue'
-import PreventScroll from '@jico/common/scroll/preventScroll'
+import { inject, ref, getCurrentInstance, onMounted, reactive, unref } from 'vue'
+import { useTouchSteps } from '@/hooks/common/use-touch-steps'
 
+let maskTimer = null
 export default {
   name: 'FilterList',
   props: {
-    unit: {
-      type: String,
-      default: 'px',
+    filterBar: {
+      type: Array,
+      default: () => [],
     },
-    height: {
+    filterData: {
+      type: Array,
+      default: () => [],
+    },
+    loadMore: {
+      type: Function,
+      default: () => {},
+    },
+    loadMoreFinished: {
+      type: Boolean,
+      default: false,
+    },
+    loadOffset: {
       type: Number,
       default: 300,
     },
-    itemHeight: {
-      type: Number,
-      default: 35,
-    },
-    items: {
-      type: Array,
-      default: () => [],
+    hackBounce: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {
     return {
       scrollLeft: 0,
-      startClientX: 0,
-      startClientY: 0,
-      axis: null,
+      pullLoading: false,
+      aixsXFlag: false,
+      // ! 通过这种方式检测手势，仅使临界点行为触发mask，实测并不理想，因为在边界快速抖动的时候，获取不到scrollLeft值
     }
   },
   setup() {
     const t = inject('t')
+    const filterList = ref(null)
+    const filterContent = ref(null)
+    const scrollXContentEl = ref(null)
+    const filterBarEl = ref(null)
+    const filterMaskEl = ref(null)
+    const data = reactive({
+      scrollXWidth: 300,
+      pullRefreshDisabled: true,
+      loadMoreLoading: false,
+    })
+    const { proxy } = getCurrentInstance()
+
+    const updateLoadMoreStatus = status => {
+      data.loadMoreLoading = status
+    }
+    onMounted(() => {
+      setTimeout(() => {
+        data.scrollXWidth = unref(scrollXContentEl).scrollWidth
+      }, 1000)
+      unref(filterContent).addEventListener('scroll', function() {
+        data.pullRefreshDisabled = unref(filterContent).scrollTop > 0
+      }, false)
+
+      // 禁止filterBar引发的scroll行为
+      unref(filterBarEl).addEventListener('touchmove', function(ev) {
+        ev.preventDefault()
+      }, {
+        passive: false,
+      })
+
+      unref(scrollXContentEl).addEventListener('scroll', function() {
+        proxy.scrollLeft = unref(scrollXContentEl).scrollLeft
+        // filter-bar与content互相约束scrollLeft，达到最大效果的同步
+        scrollXContentEl.value.scrollLeft = filterBarEl.value.scrollLeft = unref(scrollXContentEl).scrollLeft
+      }, false)
+
+      useTouchSteps(unref(filterList), {
+        handleTouchStart() {
+          proxy.toogleRootScroll(true)
+        },
+        handleTouchMove(ev, { axis }) {
+          const caseRightEnd = unref(axis) === 'x-' && proxy.scrollLeft >= (unref(scrollXContentEl).scrollWidth - unref(scrollXContentEl).clientWidth)
+          const caseLeftEnd = unref(axis) === 'x+' && proxy.scrollLeft <= 0
+          if (['x+', 'x-'].includes(unref(axis))) {
+            proxy.aixsXFlag = true
+          } else {
+            proxy.aixsXFlag = false
+          }
+          if (caseRightEnd || caseLeftEnd) {
+            ev.preventDefault()
+          }
+        },
+        handleTouchEnd() {
+          if (proxy.hackBounce && proxy.aixsXFlag) {
+            proxy.doHackBounce(unref(filterMaskEl))
+          }
+        },
+      })
+    })
 
     return {
       t,
+      filterList,
+      filterContent,
+      scrollXContentEl,
+      filterBarEl,
+      filterMaskEl,
+      data,
+      updateLoadMoreStatus,
     }
   },
   computed: {
   },
   methods: {
-    hlTouchStart(ev) {
-      const touch = ev.touches[0] || ev.changedTouches[0]
-      this.startClientX = touch.pageX
-      console.log('touch.pageX: ', touch.pageX);
-      this.startClientY = touch.pageY
+    toogleRootScroll(freeze) {
+      document.documentElement.style.overflow = freeze ? 'hidden' : 'auto'
     },
-    hlTouchMove(ev) {
-      const contentRightEl = this.$refs['scrollx-wrap']
-      let touch = ev.touches[0] || ev.changedTouches[0]
-
-      if (!this.axis) {
-        const _diffY = touch.clientY - this.startClientY
-        const _diffX = touch.clientX - this.startClientX
-        if (Math.abs(_diffY) - Math.abs(_diffX) > 0) {
-          this.axis = _diffY > 0 ? 'y+' : 'y-'
-        } else {
-          this.axis = _diffX > 0 ? 'x+' : 'x-'
-        }
-        /* this.axis =
-          Math.abs(touch.clientY - this.startClientY) -
-            Math.abs(touch.clientX - this.startClientX) >
-          0
-            ? 'y'
-            : 'x' */
-        
-        console.log('this.axis: ', this.axis);
-      }
-      const caseRightEnd = this.axis === 'x-' && this.scrollLeft >= (contentRightEl.scrollWidth - contentRightEl.clientWidth)
-      const caseLeftEnd = this.axis === 'x+' && this.scrollLeft <= 0
-      if (caseRightEnd || caseLeftEnd) {
-        console.log(123)
-        ev.preventDefault()
-      }
+    doHackBounce(maskEl) {
+      maskEl.style.display = 'block'
+      clearTimeout(maskTimer)
+      maskTimer = setTimeout(() => {
+        this.toogleRootScroll(false)
+        maskEl.style.display = 'none'
+      }, 300)
     },
-    hlTouchEnd() {
-      this.axis = null
+    onRefresh() {
+      this.filterMaskEl.style.display = 'block'
+      setTimeout(() => {
+        this.filterMaskEl.style.display = 'none'
+        this.pullLoading = false
+      }, 3000)
     },
   },
   beforeUnmount() {
   },
-  mounted() {
-    const contentRightEl = this.$refs['scrollx-wrap']
-    const filterBarRightEl = this.$refs['filter-bar-right']
-    const _this = this
-    const freeze = new PreventScroll(contentRightEl)
-    contentRightEl.addEventListener('scroll', function(ev){
-      ev.preventDefault()
-      const _scrollLeft = contentRightEl.scrollLeft
-      _this.scrollLeft = _scrollLeft
-      // console.log('_scrollLeft: ', _scrollLeft);
-      contentRightEl.scrollLeft = filterBarRightEl.scrollLeft = contentRightEl.scrollLeft
-      // if (_this.axis === 'x' && _this.scrollLeft >= (contentRightEl.scrollWidth - contentRightEl.clientWidth)) {
-      //   freeze.enable()
-      // }
-    }, false)
-    // contentRightEl.addEventListener('touchend', function(ev) {
-    //   setTimeout(() => {
-    //     freeze.disable()
-    //   }, 1000)
-    // }, false)
-  },
+  mounted() {},
 }
 </script>
 
 <style lang="less">
 .filter-list-container {
+  user-select: none;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;
+  .van-list__loading{
+    width: 100vw;
+  }
+  .mask{
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    display: none;
+  }
   .filter-list-wrap{
     .filter-bar{
+      border-bottom: 1px solid rgba(0,0,0,0.10);
+      padding-left: 15px;
       .filter-items-left{
-        width: 150px;
+        width: 135px;
         height: 36px;
         line-height: 36px;
         font-size: 14px;
@@ -172,12 +257,15 @@ export default {
       }
       .filter-items-right{
         overflow: hidden;
+        width: calc(100vw - 150px - 15px);
         .scrollx-wrap{
           overflow: auto;
           display: flex;
+          &::-webkit-scrollbar {
+            display: none;
+          }
           .scroll-item{
             min-width: 75px;
-            border-right: 1px solid #ccc;
             text-align: right;
             .text{
               height: 36px;
@@ -205,12 +293,14 @@ export default {
       position: relative;
       height: 400px;
       overflow: auto;
+      &::-webkit-scrollbar {
+        display: none;
+      }
       .content-left{
         position: absolute;
         top: 0;
         left: 0;
         width: 150px;
-        border-right: 1px solid #ccc;
         .left-item{
           height: 50px;
           line-height: 50px;
@@ -218,17 +308,49 @@ export default {
           font-size: 15px;
           color: #333333;
           font-weight: 500;
+          position: relative;
+          margin-left: 15px;
+          border-bottom: 1px solid rgba(0,0,0,0.10);
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          .title{
+            width: 100%;
+            height: 21px;
+            line-height: 21px;
+          }
+          .code{
+            height: 14px;
+            line-height: 14px;
+            font-size: 12px;
+            color: #6D6D6D;
+            font-weight: 400;
+            margin-top: 4px;
+          }
+          .icon{
+            width: 12px;
+            height: 10px;
+            background: url('../../assets/market_hk.png') no-repeat center top / 100% 100%;
+            position: absolute;
+            left: -14px;
+            top: 4px;
+          }
         }
       }
       .content-right{
         padding-left: 150px;
         overflow: hidden;
+        width: calc(100vw - 150px - 15px);
         .scrollx-wrap{
           overflow-x: auto;
+          &::-webkit-scrollbar {
+            display: none;
+          }
           .right-line-x{
             display: flex;
-            border-bottom: 1px solid #ccc;
+            border-bottom: 1px solid rgba(0,0,0,0.10);
             .right-item{
+              flex: 1;
               min-width: 75px;
               height: 50px;
               line-height: 50px;
@@ -236,10 +358,40 @@ export default {
               color: #333333;
               text-align: right;
               font-weight: 500;
-              border-right: 1px solid #ccc;
               overflow: hidden;
+              .price-top{
+                height: 21px;
+                line-height: 21px;
+                font-size: 15px;
+                color: #333333;
+                text-align: right;
+                font-weight: 500;
+              }
+              .price-bottom{
+                height: 14px;
+                line-height: 14px;
+                font-size: 12px;
+                color: #333333;
+                text-align: right;
+                font-weight: 500;
+                margin-top: 4px;
+              }
             }
           }
+        }
+      }
+      .fake-right{
+        width: 15px;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        .fake-boder-bottom{
+          height: 50px;
+          line-height: 50px;
+          min-height: 50px;
+          max-height: 50px;
+          border-bottom: 1px solid rgba(0,0,0,0.10);
         }
       }
     }

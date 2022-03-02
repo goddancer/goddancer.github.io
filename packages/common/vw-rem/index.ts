@@ -12,7 +12,7 @@ function getConfig(): configProps {
   const _veRemElContent = _vwRemEl?.getAttribute('content')
   return {
     baseCell: (getMatchValue(_veRemElContent, 'base-cell') || 10) as number,
-    uiWidth: (getMatchValue(_veRemElContent, 'ui-width') || 375) as number,
+    uiWidth: (document.documentElement.getBoundingClientRect().width || 375) as number,
     minWidth: (getMatchValue(_veRemElContent, 'min-width') || 320) as number,
     maxWidth: (getMatchValue(_veRemElContent, 'max-width') || 540) as number,
   }

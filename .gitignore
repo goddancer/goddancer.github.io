@@ -5,3 +5,4 @@ _site/
 .jekyll-metadata
 mind/ex.md
 **/dist
+yarn-error.log
