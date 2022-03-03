@@ -12,6 +12,7 @@ Content here
 
 ```markdown
 ![same-site]({{site.url}}/mind/cookie/same-site.png)
+![same-site]({{site.url}}/assets/images/blog/same-site.png)
 ```
 
 2、 插入一段可运行代码
