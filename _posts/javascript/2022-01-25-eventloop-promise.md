@@ -3,7 +3,7 @@ layout: post
 title: promise
 categories: [Javascript]
 description: promise
-keywords: promise
+keywords: promise, microtask, eventloop
 ---
 
 ## 基础
@@ -74,11 +74,11 @@ const p4 = .then((res) => {
 其中，因为p3返回的是一个promise，会转化为一个特殊的微任务`promiseResolveThenableJobTask`
 
 ```javascript
-let promiseResolveThenableJobTask = () => {
+let promiseResolveThenableJobTask = microtask(() => {
   p3.then((value) => { 
     ReslovePromise(p2, value) 
   })
-}
+})
 ```
 
 所以代码在这里，首先执行这个微任务`promiseResolveThenableJobTask`，接着将`p3.then`这个微任务放入微任务队列，等待执行；
