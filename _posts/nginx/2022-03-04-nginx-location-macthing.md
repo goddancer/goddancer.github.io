@@ -57,24 +57,24 @@ location ~* \.(gif|jpg|jpeg)$ {
 }
 ```
 
-1. the '/' request will match A
+1. the `'/'` request will match `A`
   * 精确匹配，优先级最高
-2. the '/index.html' request will match B
+2. the `'/index.html'` request will match `B`
   * 无特殊字符串修饰符规则命中
-  * 普通字符串匹配，命中B
-  * 无正则命中，执行B
-3. the '/document/document.html' request will match C
+  * 普通字符串匹配，命中`B`
+  * 无正则命中，执行`B`
+3. the `'/document/document.html'` request will match `C`
   * 无特殊字符串修饰符规则命中
-  * 普通字符串匹配，命中C
+  * 普通字符串匹配，命中`C`
   * 无正则规则命中
-  * 执行C
-4. the '/images/1.gif' will match D
-  * 有特殊字符串修饰符`^~`命中，同时为命中逻辑最长一项，直接执行D
-5. the '/documents/1.jpg' will match E
+  * 执行`C`
+4. the `'/images/1.gif'` will match `D`
+  * 有特殊字符串修饰符`^~`命中，同时为命中逻辑最长一项，直接执行`D`
+5. the `'/documents/1.jpg'` will match `E`
   * 无特殊字符串修饰符规则命中
-  * 普通字符串匹配，命中C
-  * 正则匹配命中E
-  * 正则优先级高，执行E
+  * 普通字符串匹配，命中`C`
+  * 正则匹配命中`E`
+  * 正则优先级高，执行`E`
 
 ## 其他特殊匹配规则
 
