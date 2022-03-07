@@ -10,7 +10,7 @@ import '@jico/common/vw-rem'
 import App from './App'
 import router from '@/router'
 import '@/styles/global'
-import { Progress, Popover, Loading, Overlay, PullRefresh, List, Switch, Cell } from 'vant'
+import { Progress, Popover, Loading, Overlay, PullRefresh, List, Switch, Cell, Button } from 'vant'
 import installDirectives from '@jico/common/vue-directives'
 import i18n from '@/locales'
 
@@ -26,5 +26,6 @@ app
   .use(List)
   .use(Switch)
   .use(Cell)
+  .use(Button)
   .use(installDirectives)
   .mount('#app')

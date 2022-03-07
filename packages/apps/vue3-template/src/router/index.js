@@ -8,6 +8,7 @@ const BetterScroll = () => import(/* webpackChunkName: "BetterScroll" */ '../vie
 const Test = () => import(/* webpackChunkName: "Test" */ '../view/Test.vue')
 const VirtualScroll = () => import(/* webpackChunkName: "VirtualScroll" */ '../view/VirtualScroll.vue')
 const FilterList = () => import(/* webpackChunkName: "FilterList" */ '../view/FilterList.vue')
+const EventEmitter = () => import(/* webpackChunkName: "EventEmitter" */ '../view/EventEmitter.vue')
 export const routes = [
   {
     path: '/',
@@ -43,6 +44,11 @@ export const routes = [
     path: '/filter-list',
     component: FilterList,
     name: 'FilterList',
+  },
+  {
+    path: '/event-emitter',
+    component: EventEmitter,
+    name: 'EventEmitter',
   },
 ]
 const router = createRouter({
