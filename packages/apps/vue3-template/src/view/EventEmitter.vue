@@ -25,12 +25,15 @@ export default {
       name: 'jico',
       word: 'hola',
     })
+    // * 这里不能使用arrow-function，因为arrow-function的this会在编译时绑定
+    // * 这里需要单独定义onHiFn，使引用地址相同，负责无法正常去重
+    const onHiFn = function(payload) {
+      console.log('callback this: ', this);
+      console.log('callback payload: ', payload);
+    }
     const onHi = () => {
       console.log('bundle ctx: ', ctx)
-      eventEmitter.on('hi', function(payload) {
-        console.log('callback this: ', this);
-        console.log('callback payload: ', payload);
-      }, ctx)
+      eventEmitter.on('hi', onHiFn, ctx)
     }
     const offHi = () => {
       eventEmitter.off('hi')
@@ -38,10 +41,11 @@ export default {
     const emitHi = () => {
       eventEmitter.emit('hi', ctx)
     }
+    const onceFn = function() {
+      console.log('bundle ctx output once: ', this)
+    }
     const onceHi = () => {
-      eventEmitter.once('hi', function() {
-        console.log('bundle ctx output once: ', this)
-      }, ctx)
+      eventEmitter.once('hi', onceFn, ctx)
     }
 
     return {
