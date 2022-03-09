@@ -4,6 +4,7 @@
   "description": "## 致谢",
   "main": "index.js",
   "scripts": {
+    "start": "bundle install",
     "dev": "bundle exec jekyll serve",
     "dev:drafts": "bundle exec jekyll serve --drafts --host=local.goddancer.com",
     "codemirror": "yarn workspace @jico/codemirror",
