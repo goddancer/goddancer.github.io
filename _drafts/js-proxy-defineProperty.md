@@ -8,7 +8,7 @@ keywords: proxy, Object.defineproperty
 
 ## Proxy
 
-<iframe name="codemirror" font-size="14" src="{{ site.url }}/packages/apps/codemirror/lib/index.html">
+<iframe name="codemirror" font-size="14" src="{{ site.url }}/public/codemirror/index.html">
 const obj = {
   name: 'jico',
   words: 'hola',
@@ -34,7 +34,7 @@ console.log('proxy.words: ', proxy.words);
 
 ## Object.defineProperty
 
-<iframe name="codemirror" font-size="14" src="{{ site.url }}/packages/apps/codemirror/lib/index.html">
+<iframe name="codemirror" font-size="14" src="{{ site.url }}/public/codemirror/index.html">
 let value = 'jico'
 const obj = Object.defineProperty(Object.create(null), 'name', {
   // this会被传入，不接受参数

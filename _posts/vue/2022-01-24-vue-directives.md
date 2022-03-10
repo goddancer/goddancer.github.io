@@ -11,7 +11,7 @@ keywords: vue, directive, vue-directive, vue-directives
 1. `v-shrink`
 2. `v-debounce`
 
-<iframe name="codemirror" src="{{ site.url }}/packages/apps/vue-directives/lib/index.html"></iframe>
+<iframe name="codemirror" src="{{ site.url }}/public/vue-directives/index.html"></iframe>
 
 ---
 

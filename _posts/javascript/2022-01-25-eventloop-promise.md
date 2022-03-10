@@ -10,7 +10,7 @@ keywords: promise, microtask, eventloop
 
 ### promise result一旦settled，不会变更
 
-<iframe name="codemirror" font-size="14" src="{{ site.url }}/packages/apps/codemirror/lib/index.html">
+<iframe name="codemirror" font-size="14" src="{{ site.url }}/public/codemirror/index.html">
 const p1 = new Promise((resolve, reject) => {
   // executor
   // 会将 reactions_or_result 设置为 1
@@ -27,7 +27,7 @@ p1.then(res => {
 
 ### then会返回一个新创建的promise
 
-<iframe name="codemirror" src="{{ site.url }}/packages/apps/codemirror/lib/index.html">
+<iframe name="codemirror" src="{{ site.url }}/public/codemirror/index.html">
 const p1 = new Promise((resolve) => {
   resolve(1)
 })
@@ -39,7 +39,7 @@ console.log(p1 === p3)
 
 ### microtask队列等待执行
 
-<iframe name="codemirror" src="{{ site.url }}/packages/apps/codemirror/lib/index.html">
+<iframe name="codemirror" src="{{ site.url }}/public/codemirror/index.html">
 const p1 = new Promise((resolve) => {
   resolve('同步执行开始')
 }).then(res => {

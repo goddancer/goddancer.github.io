@@ -6,4 +6,4 @@ description: case of image viewer
 keywords: image viewer, code case
 ---
 
-<iframe name="codemirror" src="{{ site.url }}/packages/apps/imageviewer/lib/index.html"></iframe>
+<iframe name="codemirror" src="{{ site.url }}/public/imageviewer/index.html"></iframe>

@@ -58,7 +58,7 @@ keywords: debounce, IOS, filter-list
 
 ## demo
 
-[手机模式预览，IOS真机最佳]({{site.url}}/packages/apps/vue3-template/lib/index.html#/filter-list)
+[手机模式预览，IOS真机最佳]({{site.url}}/public/vue3-case/index.html#/filter-list)
 
 ---
 

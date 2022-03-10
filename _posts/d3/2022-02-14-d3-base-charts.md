@@ -8,13 +8,13 @@ keywords: d3, charts
 
 ## basic charts
 
-<iframe name="codemirror" font-size="14" src="{{ site.url }}/packages/apps/d3/lib/index.html"></iframe>
+<iframe name="codemirror" font-size="14" src="{{ site.url }}/public/d3/index.html"></iframe>
 
 ## try examples
 
 ### x轴柱状图
 
-<iframe name="codemirror" font-size="14" src="{{ site.url }}/packages/apps/codemirror/lib/index.html">
+<iframe name="codemirror" font-size="14" src="{{ site.url }}/public/codemirror/index.html">
 function createSvg({ width = '100%', height = '100%', bg = 'transparent' } = {}) {
   d3.selectAll('div.section')
     .remove()
@@ -61,7 +61,7 @@ chart1()
 
 ### y轴柱状图
 
-<iframe name="codemirror" font-size="14" src="{{ site.url }}/packages/apps/codemirror/lib/index.html">
+<iframe name="codemirror" font-size="14" src="{{ site.url }}/public/codemirror/index.html">
 function createSvg({ width = '100%', height = '100%', bg = 'transparent' } = {}) {
   d3.selectAll('div.section')
     .remove()
@@ -154,7 +154,7 @@ chart2()
 
 ### 比例弧型饼图
 
-<iframe name="codemirror" font-size="14" src="{{ site.url }}/packages/apps/codemirror/lib/index.html">
+<iframe name="codemirror" font-size="14" src="{{ site.url }}/public/codemirror/index.html">
 function createSvg({ width = '100%', height = '100%', bg = 'transparent' } = {}) {
   d3.selectAll('div.section')
     .remove()

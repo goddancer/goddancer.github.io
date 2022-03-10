@@ -41,7 +41,7 @@ console.log('script end')
 
 ### 高级考察1等价写法
 
-<iframe name="codemirror" font-size="14" src="{{ site.url }}/packages/apps/codemirror/lib/index.html">
+<iframe name="codemirror" font-size="14" src="{{ site.url }}/public/codemirror/index.html">
 async function async1() {
   console.log('2:async1 start') // 2
   Promise.resolve(async2()).then(() => {
@@ -82,7 +82,7 @@ p.then(() => {
 
 ### 高级考察2等价写法
 
-<iframe name="codemirror" font-size="14" src="{{ site.url }}/packages/apps/codemirror/lib/index.html">
+<iframe name="codemirror" font-size="14" src="{{ site.url }}/public/codemirror/index.html">
 const p = Promise.resolve();
 (async () => {
   Promise.resolve(p).then(() => {
@@ -169,7 +169,7 @@ console.log('script end')
 
 ### 等价写法
 
-<iframe name="codemirror" font-size="14" src="{{ site.url }}/packages/apps/codemirror/lib/index.html">
+<iframe name="codemirror" font-size="14" src="{{ site.url }}/public/codemirror/index.html">
 async function a1 () {
   console.log('2:a1 start') // 2
   Promise.resolve(a2()).then(() => {

@@ -60,7 +60,7 @@ document.body.addEventListener('touchmove', function(ev) {
 
 在chrome浏览器中，切换到手机模式，执行这段代码并尝试手势滑动页面
 
-<iframe name="codemirror" font-size="14" src="{{ site.url }}/packages/apps/vue3-template/lib/index.html#/freeze-scroll">
+<iframe name="codemirror" font-size="14" src="{{ site.url }}/public/vue3-case/index.html#/freeze-scroll">
 </iframe>
 
 --

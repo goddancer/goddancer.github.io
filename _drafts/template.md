@@ -18,7 +18,7 @@ Content here
 2、 插入一段可运行代码
 
 ```markdown
-<iframe name="codemirror" font-size="14" src="{{ site.url }}/packages/apps/codemirror/lib/index.html">
+<iframe name="codemirror" font-size="14" src="{{ site.url }}/public/codemirror/index.html">
 </iframe>
 ```
 
