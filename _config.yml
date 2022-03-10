@@ -168,5 +168,4 @@ simple_jekyll_search:
 # -------------- #
 #    exclude     #
 # -------------- #
-exclude:
-  - packages/next-demo
+exclude: [packages/next-demo]

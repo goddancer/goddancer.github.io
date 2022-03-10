@@ -6,7 +6,41 @@ description: typescript use case
 keywords: typescript, record, keyof, typeof
 ---
 
+```typescript
+// const COMMON_HEADERS: readonly ["App-Ver", "Accept-Language", "X-requestid", "X-antispams", "X-device", "X-timestamp", "X-product"]
+export const COMMON_HEADERS = ['App-Ver', 'Accept-Language', 'X-requestid', 'X-antispams', 'X-device', 'X-timestamp', 'X-product'] as const
+const COMMON_HEADERS_LOWERCASE: string[]
+export const COMMON_HEADERS_LOWERCASE = COMMON_HEADERS.map(it => it.toLocaleLowerCase())
 
+// type COMMON_HEADERS_TYPE = "App-Ver" | "Accept-Language" | "X-requestid" | "X-antispams" | "X-device" | "X-timestamp" | "X-product"
+export type COMMON_HEADERS_TYPE = typeof COMMON_HEADERS[number]
+// type COMMON_HEADERS_LOWERCASE_TYPE = "app-ver" | "accept-language" | "x-requestid" | "x-antispams" | "x-device" | "x-timestamp" | "x-product"
+export type COMMON_HEADERS_LOWERCASE_TYPE = Lowercase<typeof COMMON_HEADERS[number]>
+/* 
+  type GetCommonHeadersData = {
+    "App-Ver": string | number;
+    "Accept-Language": string | number;
+    "X-requestid": string | number;
+    "X-antispams": string | number;
+    "X-device": string | number;
+    "X-timestamp": string | number;
+    "X-product": string | number;
+  }
+ */
+export type GetCommonHeadersData = Record<COMMON_HEADERS_TYPE, string | number>
+/* 
+  type NormalizeHeadersData = {
+    "app-ver": string | number;
+    "accept-language": string | number;
+    "x-requestid": string | number;
+    "x-antispams": string | number;
+    "x-device": string | number;
+    "x-timestamp": string | number;
+    "x-product": string | number;
+  }
+ */
+export type NormalizeHeadersData = Record<COMMON_HEADERS_LOWERCASE_TYPE, string | number>
+```
 --
 
 [1] [TypeScript入门教程](https://ts.xcatliu.com/basics/type-of-function.html)
