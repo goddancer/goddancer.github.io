@@ -169,4 +169,4 @@ simple_jekyll_search:
 #    exclude     #
 # -------------- #
 exclude: [packages, node_modules, Gemfile, Gemfile.lock, gems, webpack]
-include: [.htaccess, packages/apps]
+include: [.htaccess]
