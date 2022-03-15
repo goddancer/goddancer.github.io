@@ -6,6 +6,10 @@ description: typescript use case
 keywords: typescript, record, keyof, typeof
 ---
 
+## useCase
+
+### type数组转对象 && 对象元素小写化
+
 ```typescript
 // const COMMON_HEADERS: readonly ["App-Ver", "Accept-Language", "X-requestid", "X-antispams", "X-device", "X-timestamp", "X-product"]
 export const COMMON_HEADERS = ['App-Ver', 'Accept-Language', 'X-requestid', 'X-antispams', 'X-device', 'X-timestamp', 'X-product'] as const
