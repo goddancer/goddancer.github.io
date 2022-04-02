@@ -1,0 +1,19 @@
+- category: bytedance
+  page: [
+    {
+      name: bytedance面试题1,
+      url: /2022/04/02/bytedance1/,
+    },
+    {
+      name: bytedance面试题2,
+      url: /2022/04/02/bytedance2/,
+    },
+    {
+      name: bytedance面试题3,
+      url: /2022/04/02/bytedance3/,
+    },
+    {
+      name: bytedance面试题4,
+      url: /2022/04/02/bytedance4/,
+    }
+  ]
