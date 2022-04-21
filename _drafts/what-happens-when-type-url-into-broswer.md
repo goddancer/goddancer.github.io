@@ -29,49 +29,52 @@ keywords: url, browser, http, https, ssl, tcp, dns
 
 ## DNS解析
 
+* 首先查询浏览器DNS缓存，如果有直接返回(要查看chrome中的缓存，打开[chrome://net-internals/#dns](chrome://net-internals/#dns))
+* 如果没有缓存，继续检查操作系统hosts缓存，不同系统可能存储位置不一样，unix和类unix系统一般存储在`/etc/hosts`，[详细参考](https://en.wikipedia.org/wiki/Hosts_%28file%29#Location_in_the_file_system)
+* 如果依旧没有缓存，则会向本地网络提供商(如移动、联通、局域网等网络提供商)设置的DNS服务器发送一条DNS查询请求进行查询，也可以通过系统网络配置，指定信任的DNS服务器地址(如114等)
+* 如果本地DNS服务器存在DNS缓存，则会直接返回
+* 假如所有DNS服务器都没有DNS缓存，以`a.example.com`为例，我们的查询方式为：
+  * 我们向根服务器/查询`a.example.com`的DNS记录，根服务器没有具体记录，返回eTLD com的DNS服务器地址
+    * 需要注意，中国互联网发展较晚，根服务器的源服务器都在国外，国内的根服务器是一个备份服务器
+  * 继续向eTLD DNS服务器查询，若没有具体记录，返回eTLD + 1的DNS服务器地址
+  * 继续向eTLD + 1 DNS服务器查询，此时查询到eTLD+ 2 `a.example.com`地址
+
+## TCP
+
+TCP即传输控制协议(Transmission Control Protocol)。整个过程可以简单的理解为三次握手和四次挥手。
+
+* SYN：连接请求/连接接收 报文
+* ACK：确认报文
+
+其中三次握手用来建立TCP连接（为什么？）：
+* 第一次握手，客户端发送SYN报文给服务器。**客户端发送，服务器接收**
+  * 服务器：确认客户端发送正常，自己接收正常
+  * 客户端：无可确认信息
+* 第二次握手，服务器发送SYN报文给客户端。**服务器发送，客户端接收**
+  * 客户端：确认自己发送正常，接收正常；确认服务器接收正常，发送正常
+  * 服务器：无可确认信息
+* 第三次握手，客户端发送ACK报文给服务器
+  * 服务器：确认自己发送正常，接收正常；确认客户端发送正常，接收正常
+
+* FIN：连接终止报文
+* ACK：确认报文
+
+需要四次挥手断开TCP连接（为什么？）：
+* 服务端不能直接关闭TCP连接，因为在关闭之前需要接收到ACK确认报文，才能确认可进行操作，所以需要存在一个中间状态，成为**半关闭(half-close)**
+* 客户端计划断开TCP连接：
+  * 客户端发送FIN报文给服务器，请求断开TCP，发送完毕，客户端TCP半关闭，等待服务器确认
+  * 服务器收到FIN，发送ACK给到客户端，客户端确认关闭，TCP连接释放
+* 服务端计算断开TCP连接：
+  * 同上
+
+## SSL
 
 
-1、 插入图片
-
-```markdown
-![same-site]({{site.url}}/mind/cookie/same-site.png)
-![same-site]({{site.url}}/assets/images/blog/same-site.png)
-```
-
-2、 插入一段可运行代码
-
-```markdown
-<iframe name="codemirror" font-size="14" src="{{ site.url }}/public/codemirror/index.html">
-</iframe>
-```
-
-3、 jekyll自带代码高亮，指定语言即可
-
-```markdown
-{\% highlight javascript %}
-function hello() {
-  console.log('hello world')
-}
-{\% endhighlight %}
-```
-
-4、 在markdown中链接本地文章
-
-```markdown
-[Link to a document]({\% link _collection/name-of-document.md %})
-<!-- 下面这种写法不需要声明文件后缀 -->
-[Name of Link]({\% post_url 2010-07-21-name-of-post %})
-```
-
-5、 github gist
-
-```markdown
-{\% gist goddancer/909921aefdccd54d88eeab4ea0a9e995 %}
-```
-{% gist goddancer/909921aefdccd54d88eeab4ea0a9e995 %}
 
 ---
 
 [1] [HSTS](https://segmentfault.com/a/1190000022316260)
 
 [2] [what-happens-when](https://github.com/skyline75489/what-happens-when-zh_CN)
+
+[3] [TCP](https://segmentfault.com/a/1190000039165592)
