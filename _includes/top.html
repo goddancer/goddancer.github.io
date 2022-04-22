@@ -5,11 +5,21 @@
     {% assign tags = post.tag %}
     {% for tag in tags %}
     <li class="list-group-item">
-      {% if tag == 'top' %}
-        <a href="{{post.url}}">{{ post.title }}</a>
+      {% if tag == 'Top' %}
+        <a data-control="TOS" href="{{post.url}}">{{ post.title }}</a>
       {% endif %}
     </li>
     {% endfor %}
     {% endfor %}
   </ul>
+  <script>
+    window.showTOS = function() {
+      const tosEl = document.querySelector('a[data-control="TOS"]');
+      tosEl && (tosEl.style.display = 'block');
+    }
+    setTimeout(() => {
+      const TOSEntryEl = document.querySelector('span[title="Jico"]');
+      TOSEntryEl && (TOSEntryEl.onclick = function() {window.showTOS()});
+    }, 2000)
+  </script>
 </div>

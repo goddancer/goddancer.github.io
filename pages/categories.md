@@ -16,10 +16,13 @@ permalink: /categories/
 <h3>{{ category | first }}</h3>
 <ol class="posts-list" id="{{ category[0] }}">
 {% for post in category.last %}
+{% assign postFirstCategory = post.categories | first %}
+{% if postFirstCategory != 'Hide' %}
 <li class="posts-list-item">
 <span class="posts-list-meta">{{ post.date | date:"%Y-%m-%d" }}</span>
 <a class="posts-list-name" href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
 </li>
+{% endif %}
 {% endfor %}
 </ol>
 {% endif %}

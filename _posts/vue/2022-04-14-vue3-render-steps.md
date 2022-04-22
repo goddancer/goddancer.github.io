@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Vue3渲染流程
-categories: [Vue3]
+categories: [Vue]
 description: Vue3渲染流程
 keywords: vue3, render, reactive, compile
 ---

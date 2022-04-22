@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Vue3 reactivity
-categories: [Vue3]
+categories: [Hide, Vue]
 description: Vue3响应式原理
 keywords: vue3, reactivity
 ---
@@ -293,11 +293,6 @@ computed实现如上，我们通过ref的方式声明存储因变量，同时使
 
 * 我们一旦更新了reactive的值，就会触发effect，假如在同一时间同时更新了几个值，那每次更新都触发effect是低效的，所以我们家一个延迟，nextTick就是做这个事情
 
-```jsx
-```
-
-```jsx
-```
 * track：设置或者初始化targetMap、depsMap，装入effect
   * tragetMap：存储一个个reactive对象，key为reactive对象地址/name；value为reactive对象的depsMap
   * depsMap：存储单个reactive对象的各个属性对应的depsMap地址。key为属性名称，value为deps set地址
@@ -313,4 +308,5 @@ computed实现如上，我们通过ref的方式声明存储因变量，同时使
 ---
 
 [1] [Vue3 Reactivity](https://www.vuemastery.com/courses/vue-3-reactivity/vue3-reactivity)
+
 [2] [bilibili](https://www.bilibili.com/video/BV1SZ4y1x7a9?p=6&spm_id_from=pageDriver)
