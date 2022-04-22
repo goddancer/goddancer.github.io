@@ -1,7 +1,7 @@
 ---
 layout: post
 title: template page
-categories: [ssr]
+categories: [SSR]
 description: some word here
 keywords: nextjs, ssr
 ---

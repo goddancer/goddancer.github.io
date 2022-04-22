@@ -1,9 +1,9 @@
 ---
 layout: post
-title: template page
-categories: [cate1, cate2]
-description: some word here
-keywords: keyword1, keyword2
+title: git use case
+categories: [Git]
+description: git use case
+keywords: git
 ---
 
 ## 批量删除远程分支

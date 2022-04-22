@@ -23,3 +23,7 @@
 [1]: https://github.com/mzlogin/chinese-copywriting-guidelines
 [2]: https://help.github.com/articles/setting-up-your-pages-site-locally-with-jekyll/
 [3]: https://github.com/mzlogin/mzlogin.github.io/issues/2
+
+## ISSUES
+
+* [目录文件夹不能用中文命名，会存在编译问题](https://github.com/jekyll/jekyll/issues/8804)

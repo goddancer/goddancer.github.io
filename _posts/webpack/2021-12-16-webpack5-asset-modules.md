@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Asset Modules Of Webpack5
-categories: [webpack5]
+categories: [Webpack]
 description: webpack5支持4种module types，来处理静态资源；不再需要raw-loader,url-loader,file-loader。
 keywords: webpack5, asset module
 ---

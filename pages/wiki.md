@@ -47,3 +47,18 @@ permalink: /wiki/
   </li>
 {% endfor %}
 </ul>
+
+> 面试题系列
+
+<ul class="listing">
+{% for category in site.data.interviews %}
+  <li class="listing-item">
+    <strong>{{ category.category }}</strong>
+    <ol type="1">
+      {% for pageItem in category.page %}
+      <li><a href="{{ pageItem.url }}" target="_blank">{{ pageItem.name }}</a></li>
+      {% endfor %}
+    </ol>
+  </li>
+{% endfor %}
+</ul>

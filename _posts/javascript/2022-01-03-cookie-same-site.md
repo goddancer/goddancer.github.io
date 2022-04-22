@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Cookie SameSite
-categories: [browser, cookie]
+categories: [Browser, Cookie]
 description: Cookie SameSite info and example
 keywords: cookie, sameSite, browser
 ---

@@ -4,12 +4,9 @@
   "description": "## 致谢",
   "main": "index.js",
   "scripts": {
+    "start": "bundle install",
     "dev": "bundle exec jekyll serve",
-    "dev:drafts": "bundle exec jekyll serve --drafts",
-    "codemirror": "yarn workspace @jico/codemirror",
-    "imageviewer": "yarn workspace @jico/imageviewer",
-    "demo": "yarn workspace @jico/demo",
-    "axios": "yarn workspace @jico/axios-enchance"
+    "dev:drafts": "bundle exec jekyll serve --drafts --host=local.goddancer.com"
   },
   "repository": {
     "type": "git",
@@ -19,18 +16,6 @@
   "author": "",
   "private": true,
   "license": "ISC",
-  "workspaces": {
-    "packages": [
-      "packages/apps/*",
-      "packages/common",
-      "packages/demo/*"
-    ],
-    "nohoist": [
-      "**/codemirror",
-      "**/viewerjs",
-      "**/axios"
-    ]
-  },
   "bugs": {
     "url": "https://github.com/goddancer/goddancer.github.io/issues"
   },
@@ -57,6 +42,7 @@
     "node": ">=14.0.0"
   },
   "volta": {
-    "node": "16.13.1"
+    "node": "16.14.0",
+    "yarn": "1.22.17"
   }
 }

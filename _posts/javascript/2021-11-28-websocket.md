@@ -1,7 +1,7 @@
 ---
 layout: post
 title: WebSockets和EvnentSource简单对比&基本使用
-categories: [websocket, javascript]
+categories: [Websocket, Javascript]
 description: 关于WebSocket和EventSource特点的简单介绍、对比以及基本使用demo
 keywords: WebSockets, EventSource, Socket, SSE
 ---

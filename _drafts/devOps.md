@@ -1,9 +1,9 @@
 ---
 layout: post
-title: template page
-categories: [cate1, cate2]
-description: some word here
-keywords: keyword1, keyword2
+title: devOps
+categories: [DevOps]
+description: devOps
+keywords: devOps
 ---
 
 ![ci cd]({{site.url}}/mind/devops/ci-cd.png)

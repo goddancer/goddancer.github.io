@@ -1,7 +1,7 @@
 ---
 layout: post
 title: share data between cross subdomain page safety
-categories: [javascript, scenes]
+categories: [Javascript, Scenes]
 description: how to share data between cross subdomain page safety
 keywords: storage, share data
 ---
@@ -28,3 +28,4 @@ keywords: storage, share data
 reference：
 
 [1] [safari-localstorage-not-shared-between-iframes-hosted-on-same-domain](https://stackoverflow.com/questions/63922558/safari-localstorage-not-shared-between-iframes-hosted-on-same-domain)
+[2] [securityerror-blocked-a-frame-with-origin-from-accessing-a-cross-origin-frame](https://stackoverflow.com/questions/25098021/securityerror-blocked-a-frame-with-origin-from-accessing-a-cross-origin-frame)

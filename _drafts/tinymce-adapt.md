@@ -1,9 +1,9 @@
 ---
 layout: post
-title: template page
-categories: [cate1, cate2]
-description: some word here
-keywords: keyword1, keyword2
+title: 富文本编辑器使用指南
+categories: [Case]
+description: rich text editor
+keywords: tinymce, rich text editor
 ---
 
 ## 富文本编辑器产出内容如何适配多端？
@@ -17,3 +17,8 @@ keywords: keyword1, keyword2
 ## 富文本编辑器的坑
 
 1、在从浏览器复制内容的时候，会自动将computed-style进行inline，这时候复制的内容才会有格式一致的效果；但是inline computed-style的操作，也相当于锁定了样式效果。**所以在必要的情况下，需要做样式清洗**
+
+--
+
+[1] [github:tinymce](https://github.com/tinymce/tinymce)
+[2] [常见富文本对比](https://panjiachen.gitee.io/vue-element-admin-site/zh/feature/component/rich-editor.html#%E5%B8%B8%E8%A7%81%E5%AF%8C%E6%96%87%E6%9C%AC)

@@ -1,0 +1,42 @@
+.vs-container {
+  padding: 0.26667rem 0.13333rem 0;
+  font-size: 0.48rem;
+  overflow: hidden;
+}
+.vs-container .vs-out-wrap {
+  width: 100%;
+  height: 10.66667rem;
+  border: 0.02667rem solid orange;
+  overflow: auto;
+}
+.vs-container .vs-out-wrap .vs-inner-wrap {
+  height: 26.66667rem;
+  position: relative;
+  background-color: cornflowerblue;
+}
+.vs-container .vs-out-wrap .vs-inner-wrap .vs-item-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.container {
+  padding: 0.26667rem 0.13333rem 0;
+  font-size: 0.48rem;
+  overflow: hidden;
+}
+.container .virtual-scroll-wrap .fixed {
+  position: fixed;
+  top: 0.26667rem;
+  left: 0;
+  z-index: 9;
+}
+.container .virtual-scroll-wrap .vs-item {
+  height: 0.93333rem;
+  line-height: 0.93333rem;
+  border-bottom: 0.02667rem solid #ccc;
+  text-align: center;
+}
+
