@@ -1,1 +1,0 @@
-import { AxiosAdapter } from 'axios'

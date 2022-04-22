@@ -6,20 +6,7 @@
   "scripts": {
     "start": "bundle install",
     "dev": "bundle exec jekyll serve",
-    "dev:drafts": "bundle exec jekyll serve --drafts --host=local.goddancer.com",
-    "codemirror": "yarn workspace @jico/codemirror",
-    "imageviewer": "yarn workspace @jico/imageviewer",
-    "demo": "yarn workspace @jico/demo",
-    "d3": "yarn workspace @jico/d3",
-    "vue3": "yarn workspace @jico/vue3-template",
-    "svg": "yarn workspace @jico/svg",
-    "keyboard": "yarn workspace @jico/keyboard",
-    "scroll": "yarn workspace @jico/virtual-scroll",
-    "common": "yarn workspace @jico/common",
-    "axios": "yarn workspace @jico/axios-enchance",
-    "vw-rem": "yarn workspace @jico/vw-rem",
-    "directives": "yarn workspace @jico/vue-directives",
-    "cp:template": "rsync -avr --exclude=\"./packages/demo/template/node_modules/*\" ./packages/demo/template/* ./packages/demo/new-template"
+    "dev:drafts": "bundle exec jekyll serve --drafts --host=local.goddancer.com"
   },
   "repository": {
     "type": "git",
@@ -29,18 +16,6 @@
   "author": "",
   "private": true,
   "license": "ISC",
-  "workspaces": {
-    "packages": [
-      "packages/apps/*",
-      "packages/common",
-      "packages/demo/*"
-    ],
-    "nohoist": [
-      "**/codemirror",
-      "**/viewerjs",
-      "**/axios"
-    ]
-  },
   "bugs": {
     "url": "https://github.com/goddancer/goddancer.github.io/issues"
   },
