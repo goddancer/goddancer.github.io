@@ -1,0 +1,5 @@
+[submodule "yarn-workspace"]
+	path = yarn-workspace
+	url = https://github.com/goddancer/yarn-workspace.git
+	branch = develop
+	active = false
