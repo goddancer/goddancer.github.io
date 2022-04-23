@@ -168,5 +168,5 @@ simple_jekyll_search:
 # -------------- #
 #    exclude     #
 # -------------- #
-exclude: [packages, node_modules, pnpm-workspace, yarn-workspace]
+exclude: [.gitmodules, packages, node_modules, pnpm-workspace, yarn-workspace]
 include: [.htaccess]
