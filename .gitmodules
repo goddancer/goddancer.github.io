@@ -1,8 +1,0 @@
-[submodule "pnpm-workspace"]
-	path = pnpm-workspace
-	url = https://github.com/goddancer/pnpm-workspace.git
-	branch = develop
-[submodule "yarn-workspace"]
-	path = yarn-workspace
-	url = https://github.com/goddancer/yarn-workspace.git
-	branch = develop
