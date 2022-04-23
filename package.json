@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "bundle install",
-    "dev": "bundle exec jekyll serve",
+    "dev": "bundle exec jekyll serve --host=local.goddancer.com",
     "dev:drafts": "bundle exec jekyll serve --drafts --host=local.goddancer.com"
   },
   "repository": {
