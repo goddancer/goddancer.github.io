@@ -12,7 +12,7 @@ keywords: react, getDerivedStateFromProps, render, componentDidMount, lifesycle
 UI = fn(state)
 ```
 
-![same-site]({{site.url}}/assets/images/react-lifesycle/01.png)
+![same-site]({{site.url}}/assets/images/react/lifesycle/01.png)
 
 其中：
 * state 负责计算状态变化 又称为Reconciler(因为会执行一个叫reconcile的diff算法)
@@ -25,7 +25,7 @@ UI = fn(state)
 
 ## React生命周期函数
 
-![same-site]({{site.url}}/assets/images/react-lifesycle/02.png)
+![same-site]({{site.url}}/assets/images/react/lifesycle/02.png)
 
 如上图，React生命周期函数主要在两个阶段执行，分别为Render阶段，Commit阶段。
 
@@ -42,7 +42,7 @@ React执行渲染工作主要分为两个阶段：**Render阶段**和**Commit阶
 
 ### 首次渲染
 
-![same-site]({{site.url}}/assets/images/react-lifesycle/03.png)
+![same-site]({{site.url}}/assets/images/react/lifesycle/03.png)
 
 我们采用深度优先的先序遍历(根左右)算法，以上图为例：
 * APP作为入口，首先我们从APP开始深度遍历，我们先解析APP创建fiber树(VNode)，执行`constructor`,`getDerivedFromProps/componentWillMount`、`render`三个函数
@@ -52,7 +52,7 @@ React执行渲染工作主要分为两个阶段：**Render阶段**和**Commit阶
 * 然后回到P1，找到P1的兄弟及诶单P2，调用三个函数，然后回到APP根节点
 * 至此，Render阶段完成
 
-![same-site]({{site.url}}/assets/images/react-lifesycle/04.png)
+![same-site]({{site.url}}/assets/images/react/lifesycle/04.png)
 
 接下来是Commit阶段，首先我们将整个fiber树渲染到DOM中，我们会按照后序遍历(左右根)的方式执行子节点的生命周期：
 * 首先执行C1的`componentDidMount`
@@ -62,7 +62,7 @@ React执行渲染工作主要分为两个阶段：**Render阶段**和**Commit阶
 
 首先我们需要知道，每次调用`this.setState`都会创建完整的fiber树，只有发生变化的节点，才会调用对应的生命周期函数。
 
-![same-site]({{site.url}}/assets/images/react-lifesycle/05.png)
+![same-site]({{site.url}}/assets/images/react/lifesycle/05.png)
 
 以上图为例，假设我们更新了C2节点的数据，将C2从蓝色变为绿色
 1. 首先我们调用`this.setState`，将C2的state变更为绿色
