@@ -1,5 +1,10 @@
+/* 自定义功能 */
 a[data-control="TOS"] {
     display: none;
+}
+/* 样式覆盖 */
+.markdown-body pre{
+    white-space: pre-wrap;
 }
 .site-header,.site-header-actions .select-menu {
     position: relative
