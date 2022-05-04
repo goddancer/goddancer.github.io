@@ -291,7 +291,7 @@ computed实现如上，我们通过ref的方式声明存储因变量，同时使
 
 ### 为什么要用nextTick
 
-* 我们一旦更新了reactive的值，就会触发effect，假如在同一时间同时更新了几个值，那每次更新都触发effect是低效的，所以我们家一个延迟，nextTick就是做这个事情
+* 我们一旦更新了reactive的值，就会触发effect，假如在同一时间同时更新了几个值，那每次更新都触发effect是低效的，所以我们加一个延迟，nextTick就是做这个事情
 
 * track：设置或者初始化targetMap、depsMap，装入effect
   * tragetMap：存储一个个reactive对象，key为reactive对象地址/name；value为reactive对象的depsMap

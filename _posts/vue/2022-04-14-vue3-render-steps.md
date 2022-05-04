@@ -66,6 +66,9 @@ keywords: vue3, render, reactive, compile
     * 新旧两份VNode数据发送给patch function；
     * patch function对比(diff)新旧两份数据，以最高效的方式将变更还原到页面；
 
+需要注意的是：
+* 每一个tempalte都会生成一个render函数，所以diff会结合compile静态分析以及reactivity响应式变量获取在局部做patch
+
 ---
 
 [1] [bilibili video](https://www.bilibili.com/video/BV1rC4y187Vw?p=1)

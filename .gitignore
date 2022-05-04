@@ -6,3 +6,4 @@ _site/
 mind/ex.md
 **/dist
 yarn-error.log
+gitignore*.*

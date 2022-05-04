@@ -68,7 +68,7 @@ React执行渲染工作主要分为两个阶段：**Render阶段**和**Commit阶
 1. 首先我们调用`this.setState`，将C2的state变更为绿色
 2. 然后我们进入Render阶段
 3. 我们采用深度优先的前序遍历算法，**创建完整的fiber树**
-4. 我们使用reconcile(diff)算法，发现C2从蓝色变更为了绿色，我们标记这次变化，同时执行生命周期函数`getDerivedStateFromProps`；继续执行Render阶段，直到回到APP根节点，Render阶段完成
+4. 我们使用reconcile(diff)算法，发现C2从蓝色变更为了绿色，我们标记这次变化，同时执行生命周期函数`getDerivedStateFromProps、render`；继续执行Render阶段，直到回到APP根节点，Render阶段完成
 5. 进入Commit阶段
 6. 执行步骤4中对应的视图变化，执行C2的生命周期函数`getSnapshotBeforeUpdate`,`componentDidUpdate`
 7. 以上步骤完成，新创建的fiber树会替换之前旧的fiber树，等待下次调用`this.setState`再生成一棵新的fiber树
