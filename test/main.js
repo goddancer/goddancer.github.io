@@ -1,32 +1,31 @@
-const obj = {
-  a: 1,
-  [Symbol('name')]: 'hola',
-  b: function () { },
-  b1: () => 2,
-  c: new RegExp(/\d/, 'ig'),
-  d: undefined,
-  e: /\d/ig,
-  f: new Date(),
+var foo = {
+  value: 1
+};
+
+function bar(...args) {
+  console.log('args: ', args);
+  console.log(this.value);
+  return args
 }
-// 深拷贝其实挺简单的，或者说所有的递归其实都很简单，首先考虑好递归终止条件，一一列出，然后根据发生递归的条件递归即可
-const deepClone = (obj, weakObj = new WeakMap()) => {
-  if (obj === null || typeof obj !== 'object') {
-    return obj
-  }
-  if (obj instanceof Date) {
-    return new Date(obj)
-  }
-  if (obj instanceof RegExp) {
-    return new RegExp(obj)
-  }
-  if (weakObj.has(obj)) {
-    return weakObj.get(obj)
-  }
-  weakObj.set(obj)
-  const resObj = Array.isArray(obj) ? [] : {}
-  Reflect.ownKeys(obj).forEach(key => {
-    resObj[key] = deepClone(obj[key], weakObj)
-  })
-  return resObj
+
+Function.prototype.myApply = function(context) {
+  // 需要考虑假如不存在调用主体，需要设置为window调用
+  context = context || window
+  // this指向当前调用对象，即bar
+  context.fn = this
+  // call改变this指向，谁调用指向谁，由此思路欲出
+  // 同时需要考虑传递参数进来，以及call接受的参数格式
+  const result = context.fn([...arguments].slice(1))
+  delete context.fn
+  return result
 }
-console.log('deepClone(obj): ', deepClone(obj));
+Function.prototype.myBind = function(context) {
+  context = context || window
+  const fn = this, args = [...arguments].slice(1)
+  return function() {
+    return fn.apply(context, args.concat(...arguments))
+  }
+}
+const res = bar.myBind(foo, [1,2,3]); // 1
+console.log('res: ', res());
+
