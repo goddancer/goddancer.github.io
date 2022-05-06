@@ -29,3 +29,6 @@ Function.prototype.myBind = function(context) {
 const res = bar.myBind(foo, [1,2,3]); // 1
 console.log('res: ', res());
 
+function getValue() {
+  console.log(input1.value)
+}
