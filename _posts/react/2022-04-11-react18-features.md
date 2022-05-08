@@ -181,7 +181,7 @@ react支持以下两种渲染方式：
 2. 在条件没有发成或数据没有加载完成时，会先渲染fallback指定的组件
 3. 一旦有数据加载成功，react会向上寻找最近的`suspense`组件，解除pending状态
 
-但是要真实达到这个效果，react需要知道当前`suspense`包裹的数据是否加载完成，如何知道呢？
+但是要真实达到这个效果，react需要知道当前`suspense`包裹的数据是否加载完成，如何知道呢？可以看看官方的[Suspense Demo](https://codesandbox.io/s/frosty-hermann-bztrp?file=/src/fakeApi.js:473-482)
 
 这对三方请求的API提出了要求，在数据未加载完成时，需要通过throw promise的方式，将这个pending状态的请求抛出，react会catch这个请求，设置一个当前`suspense`的pending状态，显示fallback的内容，一旦请求完成，react解除pending状态，触发重新渲染即可，通过以上的方式，达到了fetch as you render的并发渲染状态
 

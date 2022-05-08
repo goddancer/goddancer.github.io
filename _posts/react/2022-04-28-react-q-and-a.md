@@ -25,8 +25,11 @@ keywords: react, Q&A
     * this.return 返回指针(父组件)
     * this.child 子节点
     * this.sibling 同级节点
+> ![same-site]({{site.url}}/assets/images/react/fiber.png)
 > 通过以上三个指针，就能实现complier阶段的深度优先遍历
 > * Fiber与普通JS调用栈的区别：普通JS栈帧执行完以后，调用函数指针返回后即销毁；Fiber在渲染结束以后会继续存在，保存组件的实例信息，如State等
+    * `this.tag` Fiber对应的组件类型，Function/Class等
+    * `this.stateNode` Fiber对应的真实DOM节点
 > * Fiber是使用JS实现的，意味着Fiber的底层仍然是JS调用栈
   ***这里先做一个猜测，Fiber的每个单元是通过JS栈来调用执行的，但是整个Fiber的完整链表树的数据是存储在Heap中的，也就是说Fiber子单元执行结束以后，会将计算结果和state存储到Heap中，然后抉择让渡控制权，在下一个eventloop中，继续执行Fiber子单元，直至Fiber根左右深度遍历完成返回至ROOT，此时Complier完成，开始执行左右根的Commit阶段***
 
@@ -44,7 +47,7 @@ keywords: react, Q&A
 **generator函数也能够主动让出程序控制权(generator函数本质就是协程)，理论上也能实现Concurrent Rendering**，为什么React不使用generator实现Fiber呢？
 
 >主要有两个原因：
->* 每个可暂停的函数需要被包裹在generator函数中，如果React全面使用generator，那么存量的代码有很大的工作量，同时，generator函数对于运行时的是比较大的，存在性能问题
+>* 每个可暂停的函数需要被包裹在generator函数中，如果React全面使用generator，那么存量的代码有很大的工作量(<b style="color: red;">generator和async函数一样，具有传染性</b>)，同时，generator函数对于运行时的是比较大的，存在性能问题
 >* **最大的问题是，我们知道React有很多的记忆状态值`memoization`，设想我们需要在多个时间切片内执行如下的方法，在generator函数执行之初，我们传递了依赖的参数`a,b,c`，假如A已经执行完成，我们在下一个时间切片中执行B之前，我们的依赖参数b已经被更新，我们是无法做到既复用上一个依赖函数x的结果，同时又能更新B函数的参数的，因为整个generator函数已经基于初始参数建立**
 
 ```js
@@ -468,8 +471,22 @@ export function render() {
 }
 ```
 
+### Reconciler协调器
 
+首先，我们知道如下方式可以触发React更新：
+* `this.setState` 状态变化
+* `this.forceUpdate` 强制触发更新
+* `ReactDOM.render` 渲染函数
 
+当有更新发生时，Reconciler会做如下工作：
+* 调用函数组件、或者class组件的render方法，将JSX转化为VDOM
+* 将VDOM和上一次的VDOM进行对比
+* 通过对比找出此次发生变化的VDOM
+* 通知Renderer将变化的VDOM更新到页面上
+
+### React diff算法
+
+[diff的瓶颈以及react如何应对](https://react.iamkasong.com/diff/prepare.html#diff%E7%9A%84%E7%93%B6%E9%A2%88%E4%BB%A5%E5%8F%8Areact%E5%A6%82%E4%BD%95%E5%BA%94%E5%AF%B9)
 
 
 
@@ -482,4 +499,7 @@ export function render() {
 ---
 
 [1] [Fiber Principles: Contributing To Fiber](https://github.com/facebook/react/issues/7942)
+
 [2] [[译] React 为何要使用链表遍历 Fiber 树](https://github.com/ddzy/react-reading-sources/issues/18)
+
+[3] [React技术揭秘](https://react.iamkasong.com/)
