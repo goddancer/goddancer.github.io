@@ -19,7 +19,7 @@ keywords: vue3, render, reactive, compile
 
 ## Vue的三个核心模块
 
-![same-site]({{site.url}}/assets/images/vue3/source-code/01.jpg)
+![same-site]({{site.url}}/assets/im····ges/vue3/source-code/01.jpg)
 
 * 响应式模块 the reactivity module
 * 编译器模块 the compiler module
@@ -67,7 +67,27 @@ keywords: vue3, render, reactive, compile
     * patch function对比(diff)新旧两份数据，以最高效的方式将变更还原到页面；
 
 需要注意的是：
+* *首先，render function内部使用到了init obj的对象值(引用)*
+    * *然后，我们将init obj的值响应式初始化处理，此时任何**访问/修改**响应式对象的行为我们都能接收到通知*
+    * *最后，此时render fn对于普通对象的引用会成为对响应式对象的引用，使得：*
+      * ***当响应式对象发生访问时，我们可以track render fn作为依赖***
+      * ***当响应式对象发生更新时，我们可以trigger render fn拿到新的VDom数据***
+      * 当然，这里面还会有re-compile的工程，即根据template上下文的变化，重新生成render fn
 * 每一个tempalte都会生成一个render函数，所以diff会结合compile静态分析以及reactivity响应式变量获取在局部做patch
+
+## Vue3优化
+
+![same-site]({{site.url}}/assets/images/vue3/optimize/01.jpg)
+
+我们知道使用inline函数的方式书写click触发事件时，其实无论在Vue还是React中，都会导致子组件被重新渲染，因为本质上inline function每次都是一个new fn，指向的地址发生了变化，导致了不必要的更新：
+* 在React中，我们可以使用useCallback声明函数缓存，当依赖变化时，重新执行函数，渲染子组件
+* 在vue中，我们是通过compile进行自动优化的，更多的发生在vue静态模版分析阶段
+  * 如上图，我们将inline fn使用句柄缓存的方式进行缓存，同时缓存函数的调用主体(this)指向ctx`_ctx.onClick($event)`，也就是说每次执行onClick函数，都会去ctx上下文获取最新的函数，即使onClick函数内部发生了变化，也不会导致问题
+    * **一句话说明就是，我们自动缓存了inline fn的引用指向，引用本身始终指向上下文中最新的函数执行体本身**
+    * 所以这里的template节点，经过静态分析、处理以后，其实就相当于静态节点，后续不需要再做无关的diff，因为它对vnode本身没有影响
+* inline function主要有两种形式：
+  * `@click="() => fn()"`
+  * `@click="fn(123)"` 这其实是一种隐式的inline function
 
 ---
 
