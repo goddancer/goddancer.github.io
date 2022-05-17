@@ -484,6 +484,47 @@ export function render() {
 * 通过对比找出此次发生变化的VDOM
 * 通知Renderer将变化的VDOM更新到页面上
 
+### babel/preset-react做了什么
+
+```tsx
+// before transform
+const a = () => {
+	return (
+    <div className="App">
+      {
+        [].map(([key, arr]) => {
+          return (
+            <div key={key}>
+              123
+            </div>
+          )
+        })
+      }
+    </div>
+  )
+}
+// transfrom
+var a = function a() {
+  return /*#__PURE__*/React.createElement("div", {
+    className: "App"
+  }, [].map(function (_ref) {
+    var _ref2 = _slicedToArray(_ref, 2),
+        key = _ref2[0],
+        arr = _ref2[1];
+
+    return /*#__PURE__*/React.createElement("div", {
+      key: key
+    }, "123");
+  }));
+};
+```
+
+可以看到：
+* react其实就是通过babel抹平jsx适配，使浏览器可以解析
+  * 采用的方案其实就是react本身提供的React.createElement
+* 对比vue，其实类似
+  * vue-loader做的操作也只是将template转换为render函数
+
 ### React diff算法
 
 [diff的瓶颈以及react如何应对](https://react.iamkasong.com/diff/prepare.html#diff%E7%9A%84%E7%93%B6%E9%A2%88%E4%BB%A5%E5%8F%8Areact%E5%A6%82%E4%BD%95%E5%BA%94%E5%AF%B9)
