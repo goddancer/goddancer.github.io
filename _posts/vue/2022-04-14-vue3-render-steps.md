@@ -8,7 +8,7 @@ keywords: vue3, render, reactive, compile
 
 ## 组件Render流程
 
-![same-site]({{site.url}}/assets/images/vue3/render/render-line.jpg)
+![vue3-render-category]({{site.url}}/assets/images/vue3/render/render-line.jpg)
 
 当组件内容更改时，render函数将重新运行，创建另一个VDom，然后将新、旧两份VNode数据交付Vue进行对比，以采用高效更新方式渲染。
 
@@ -19,7 +19,7 @@ keywords: vue3, render, reactive, compile
 
 ## Vue的三个核心模块
 
-![same-site]({{site.url}}/assets/im····ges/vue3/source-code/01.jpg)
+![vue3-render-category]({{site.url}}/assets/images/vue3/source-code/01.jpg)
 
 * 响应式模块 the reactivity module
 * 编译器模块 the compiler module
@@ -27,14 +27,14 @@ keywords: vue3, render, reactive, compile
 
 ### 1. Reactivity Module
 
-![same-site]({{site.url}}/assets/images/vue3/source-code/02.jpg)
+![vue3-render-category]({{site.url}}/assets/images/vue3/source-code/02.jpg)
 
 * 允许我们创建响应式js对象，当使用响应式对象的代码运行时，它们会被跟踪(tracked)；
 * 如果响应式对象发生变化，它们可以在后台运行(tirgger);
 
 ### 2. Compiler Module
 
-![same-site]({{site.url}}/assets/images/vue3/source-code/03.jpg)
+![vue3-render-category]({{site.url}}/assets/images/vue3/source-code/03.jpg)
 
 * 可以将template模版代码编译成**渲染函数**；
 * 这个过程可以发生在浏览器的运行时，但是在构建Vue项目时更常见(这样浏览器就能只接受渲染函数，达到性能优化的目的)；
@@ -42,14 +42,14 @@ keywords: vue3, render, reactive, compile
 
 ### 3. Render Module
 
-![same-site]({{site.url}}/assets/images/vue3/source-code/04.jpg)
+![vue3-render-category]({{site.url}}/assets/images/vue3/source-code/04.jpg)
 
 * render分为三个阶段：
   * Render Phase：在渲染阶段，render function执行，返回virtual DOM node
   * Mount Phase：在挂载阶段，根据virtual DOM node调用DOM API来创建真实节点
   * Patch Phase：在补丁阶段，渲染器将旧的virtual DOM和新的virtual DOM进行diff，只更新网页发生变化的部分
 
-![same-site]({{site.url}}/assets/images/vue3/source-code/05.png)
+![vue3-render-category]({{site.url}}/assets/images/vue3/source-code/05.png)
 
 ## 整体渲染更新流程
 
@@ -77,7 +77,7 @@ keywords: vue3, render, reactive, compile
 
 ## Vue3优化
 
-![same-site]({{site.url}}/assets/images/vue3/optimize/01.jpg)
+![vue3-render-category]({{site.url}}/assets/images/vue3/optimize/01.jpg)
 
 我们知道使用inline函数的方式书写click触发事件时，其实无论在Vue还是React中，都会导致子组件被重新渲染，因为本质上inline function每次都是一个new fn，指向的地址发生了变化，导致了不必要的更新：
 * 在React中，我们可以使用useCallback声明函数缓存，当依赖变化时，重新执行函数，渲染子组件
