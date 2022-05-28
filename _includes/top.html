@@ -19,7 +19,11 @@
     }
     setTimeout(() => {
       const TOSEntryEl = document.querySelector('span[title="Jico"]');
-      TOSEntryEl && (TOSEntryEl.onclick = function() {window.showTOS()});
-    }, 2000)
+      TOSEntryEl && (TOSEntryEl.onclick = function() {window.showTOS();localStorage.setItem('whoami', 'jico')});
+      let whoami = localStorage.getItem('whoami')
+      if (whoami === 'jico') {
+        window.showTOS()
+      }
+    }, 300)
   </script>
 </div>
