@@ -1,0 +1,79 @@
+[
+  {
+    "name": "vocabulary about airports",
+    "words": [
+      {
+        "word": "terminal",
+        "translate": "航站楼"
+      },
+      {
+        "word": "check-in counter",
+        "translate": "值机柜台"
+      },
+      {
+        "word": "boarding pass",
+        "translate": "登机牌"
+      },
+      {
+        "word": "business class",
+        "translate": "商务舱"
+      },
+      {
+        "word": "economy class",
+        "translate": "经济舱"
+      },
+      {
+        "word": "aisle seat",
+        "translate": "靠过道的座位"
+      },
+      {
+        "word": "domestic flight",
+        "translate": "国内航班"
+      },
+      {
+        "word": "security check",
+        "translate": "安检"
+      },
+      {
+        "word": "duty-fress shop",
+        "translate": "免税店"
+      },
+      {
+        "word": "departure gate",
+        "translate": "登机口"
+      },
+      {
+        "word": "boarding call",
+        "translate": "登机通知"
+      },
+      {
+        "word": "delay",
+        "translate": "延误"
+      },
+      {
+        "word": "carry-on luggage",
+        "translate": "随身携带的行李"
+      },
+      {
+        "word": "layover",
+        "translate": "中转停留"
+      },
+      {
+        "word": "turbulence",
+        "translate": "颠簸"
+      },
+      {
+        "word": "customs",
+        "translate": "海关"
+      },
+      {
+        "word": "currency exchange",
+        "translate": "货币兑换"
+      },
+      {
+        "word": "baggage claim",
+        "translate": "行李提取出"
+      }
+    ]
+  }
+]
