@@ -11,8 +11,9 @@ keywords: vocabulary， vocabularies
 {% for item in site.data.english.vocabulary.lesson1 %}
 {% assign index = forloop.index %}
 ### {{ index }}. {{ item.name }}
-{% for wordItem in item %}
-<strong>【Vocabulary】- {{ wordItem.word }}</strong>
+{% for wordItem in item.words %}
+{% assign innerIndex = forloop.index %}
+<strong style="color: green;">{{ index }}.{{ innerIndex }}. {{ wordItem.word }}</strong>
 <p></p>
 <details>
 <summary><strong>【Translate】</strong></summary>
