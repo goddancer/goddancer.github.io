@@ -29,7 +29,7 @@ keywords: useMemo, useCallback, useEvent
 * Observer就是观察者
 * 链接两者的桥梁就是Observable对象的subscribe
 
-![1709972282849](image/2024-03-09-deep-to-rxjs/1709972282849.png)
+![1709972282849]({{site.url}}/assets/images/rxjs/1709972282849.png)
 
 rxjs中的数据流就是Observable对象，Observable实现了下面两种设计模式：
 
